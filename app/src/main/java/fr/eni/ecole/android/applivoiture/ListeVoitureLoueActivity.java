@@ -23,7 +23,6 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_liste_voiture_loue);
         listViewVoiture = (ListView) findViewById(R.id.listViewVoiture);
 
-        if(getIntent().getExtras() != null){
             Gerant g = new Gerant(1,"titi","titi","mail@mail.com");
 
             Agence a = new Agence(1,"agence1",g);
@@ -31,7 +30,7 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
             listVoiture.add(new Voiture(2,1,0,1,20F,"cn-86-rdf","loué","renaud","clio",a));
             listVoiture.add(new Voiture(3,1,0,1,20F,"cn-86-rdf","loué","renaud","captur",a));
 
-                listViewVoiture.setAdapter(new ListeVoitureLoueAdapter(ListeVoitureLoueActivity.this,R.layout.maliste, listVoiture));
+                listViewVoiture.setAdapter(new ListeVoitureLoueAdapter(ListeVoitureLoueActivity.this,R.layout.ma_liste, listVoiture));
 
                 listViewVoiture.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -47,4 +46,3 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
                 });
         }
     }
-}

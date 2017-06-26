@@ -19,4 +19,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="chiffre_d_affaires">chiffre d\'affaires</string>
+    <string name="voiture_loue">voiture loue</string>
+    <string name="voiture_non_loue">voiture non loue</string>
 </resources>
