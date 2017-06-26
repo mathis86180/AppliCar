@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/Ajout"
+    <item
+        android:id="@+id/Ajout"
         android:title="@string/ajouter_un_vehicule"
-        android:onClick="ajoutVehicule"></item>
+        />
 
-    <item android:id="@+id/Recherche"
+    <item
+        android:id="@+id/Recherche"
         android:title="@string/recherche_v_hicule"
-        android:onClick="rechercheVehicule"></item>
+        />
 
-    <item android:id="@+id/Parametre"
+    <item
+        android:id="@+id/Parametre"
         android:title="@string/param_tres"
-        android:onClick="param"></item>
+        />
 
 </menu>

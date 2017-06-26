@@ -1,10 +1,13 @@
 package fr.eni.ecole.android.applivoiture.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mseigle2016 on 26/06/2017.
  */
 
-public class Agence {
+public class Agence{
 
     private Integer id;
     private String nom;
@@ -39,4 +42,5 @@ public class Agence {
     public void setGerant(Gerant gerant) {
         this.gerant = gerant;
     }
+
 }

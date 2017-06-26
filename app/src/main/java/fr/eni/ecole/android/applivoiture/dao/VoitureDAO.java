@@ -19,7 +19,6 @@ public class VoitureDAO {
     private final static String QUERY_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
             "VOITURE( " +
             "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "NOM TEXT, " +
             "LOUE INTEGER, " +
             "VILLE INTEGER, " +
             "CAMPAGNE INTEGER, " +
@@ -33,9 +32,9 @@ public class VoitureDAO {
 
     private final static String QUERY_DELETE_TABLE = "DROP TABLE IF EXISTS VOITURE";
     private final static String TABLE_NAME = "VOITURE";
-    private final static String QUERY_SELECT_ALL = "SELECT ID, NOM, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
+    private final static String QUERY_SELECT_ALL = "SELECT ID, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE FROM VOITURE";
-    private final static String QUERY_FIND_ONE = "SELECT ID, NOM, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
+    private final static String QUERY_FIND_ONE = "SELECT ID, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE FROM VOITURE WHERE ID = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
 
@@ -74,7 +73,7 @@ public class VoitureDAO {
     public static List<Voiture> initList(){
 
         if (listeVoitures.isEmpty()){
-            //listeVoitures.add(new Voiture(1, "test", 0, 1, 0, 20.50F, "ABC089", "bien", "RENAUD", "Espace", 1));
+            //listeVoitures.add(new Voiture(1, 0, 1, 0, 20.50F, "ABC089", "bien", "RENAUD", "Espace", 1));
 
             // TODO : Plus de jeux d'essai
 
