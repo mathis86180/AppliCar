@@ -13,6 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
+import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
+import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +44,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        AgenceDAO agenceDAO = new AgenceDAO(this);
+        GerantDAO gerantDAO = new GerantDAO(this);
+        VoitureDAO voitureDAO = new VoitureDAO(this);
     }
 
     @Override
