@@ -21,6 +21,21 @@ public class Voiture implements Serializable{
     private String marque;
     private String modele;
     private Agence agence;
+    private Integer image;
+
+    public Voiture(Integer id, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat, String marque, String modele, Agence agence, Integer image) {
+        this.id = id;
+        this.loue = loue;
+        this.ville = ville;
+        this.campagne = campagne;
+        this.prix_par_jour = prix_par_jour;
+        this.immatriculation = immatriculation;
+        this.etat = etat;
+        this.marque = marque;
+        this.modele = modele;
+        this.agence = agence;
+        this.image = image;
+    }
 
     public Voiture(Integer id, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation,
                    String etat, String marque, String modele, Agence agence) {
@@ -114,5 +129,13 @@ public class Voiture implements Serializable{
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public Integer getImage() {
+        return image;
+    }
+
+    public void setImage(Integer image) {
+        this.image = image;
     }
 }
