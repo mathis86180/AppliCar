@@ -12,7 +12,6 @@ import java.io.Serializable;
 public class Voiture implements Serializable{
 
     private Integer id;
-    private String nom;
     private int loue;
     private int ville;
     private int campagne;
@@ -23,10 +22,9 @@ public class Voiture implements Serializable{
     private String modele;
     private Agence agence;
 
-    public Voiture(Integer id, String nom, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation,
+    public Voiture(Integer id, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation,
                    String etat, String marque, String modele, Agence agence) {
         this.id = id;
-        this.nom = nom;
         this.loue = loue;
         this.ville = ville;
         this.campagne = campagne;
@@ -44,14 +42,6 @@ public class Voiture implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public int getLoue() {

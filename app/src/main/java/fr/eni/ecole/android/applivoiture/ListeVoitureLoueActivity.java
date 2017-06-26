@@ -27,9 +27,9 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
             Gerant g = new Gerant(1,"titi","titi","mail@mail.com");
 
             Agence a = new Agence(1,"agence1",g);
-            listVoiture.add(new Voiture(1,"voiture 1",true,true,false,"renaud","megane",a));
-            listVoiture.add(new Voiture(2,"voiture 2",true,true,false,"renaud","megane",a));
-            listVoiture.add(new Voiture(3,"voiture 3",true,true,false,"renaud","megane",a));
+            listVoiture.add(new Voiture(1,1,0,1,20F,"cn-86-rdf","loué","renaud","megane",a));
+            listVoiture.add(new Voiture(2,1,0,1,20F,"cn-86-rdf","loué","renaud","clio",a));
+            listVoiture.add(new Voiture(3,1,0,1,20F,"cn-86-rdf","loué","renaud","captur",a));
 
                 listViewVoiture.setAdapter(new ListeVoitureLoueAdapter(ListeVoitureLoueActivity.this,R.layout.maliste, listVoiture));
 

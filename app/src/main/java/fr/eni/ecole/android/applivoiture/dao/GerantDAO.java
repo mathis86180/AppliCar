@@ -15,11 +15,12 @@ public class GerantDAO {
             "GERANT( " +
             "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "NOM TEXT, " +
-            "PRENOM TEXT)";
+            "PRENOM TEXT, " +
+            "MAIL TEXT)";
     private final static String QUERY_DELETE_TABLE = "DROP TABLE IF EXISTS GERANT";
     private final static String TABLE_NAME = "GERANT";
-    private final static String QUERY_SELECT_ALL = "SELECT ID, NOM, PRENOM FROM GERANT";
-    private final static String QUERY_FIND_ONE = "SELECT ID, NOM, PRENOM FROM GERANT WHERE ID = ?";
+    private final static String QUERY_SELECT_ALL = "SELECT ID, NOM, PRENOM, MAIL FROM GERANT";
+    private final static String QUERY_FIND_ONE = "SELECT ID, NOM, PRENOM, MAIL FROM GERANT WHERE ID = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
 
     private SQLiteOpenHelper helper;

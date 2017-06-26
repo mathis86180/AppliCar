@@ -52,7 +52,7 @@ public class ListeVoitureLoueAdapter extends ArrayAdapter<Voiture> {
         }
         Voiture item = getItem(position);
 
-        viewHolder.textViewNom.setText(item.getNom());
+        viewHolder.textViewNom.setText(item.getModele());
         viewHolder.textViewMarque.setText(item.getMarque());
         viewHolder.textViewModele.setText(item.getModele());
         return convertView;
