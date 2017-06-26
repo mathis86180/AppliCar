@@ -1,26 +1,36 @@
 package fr.eni.ecole.android.applivoiture.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mseigle2016 on 26/06/2017.
  */
 
-public class Voiture {
+public class Voiture{
 
     private Integer id;
     private String nom;
-    private Boolean loue;
-    private Boolean ville;
-    private Boolean campagne;
+    private int loue;
+    private int ville;
+    private int campagne;
+    private Float prix_par_jour;
+    private String immatriculation;
+    private String etat;
     private String marque;
     private String modele;
     private Agence agence;
 
-    public Voiture(Integer id, String nom, Boolean loue, Boolean ville, Boolean campagne, String marque, String modele, Agence agence) {
+    public Voiture(Integer id, String nom, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation,
+                   String etat, String marque, String modele, Agence agence) {
         this.id = id;
         this.nom = nom;
         this.loue = loue;
         this.ville = ville;
         this.campagne = campagne;
+        this.prix_par_jour = prix_par_jour;
+        this.immatriculation = immatriculation;
+        this.etat = etat;
         this.marque = marque;
         this.modele = modele;
         this.agence = agence;
@@ -42,27 +52,27 @@ public class Voiture {
         this.nom = nom;
     }
 
-    public Boolean getLoue() {
+    public int getLoue() {
         return loue;
     }
 
-    public void setLoue(Boolean loue) {
+    public void setLoue(int loue) {
         this.loue = loue;
     }
 
-    public Boolean getVille() {
+    public int getVille() {
         return ville;
     }
 
-    public void setVille(Boolean ville) {
+    public void setVille(int ville) {
         this.ville = ville;
     }
 
-    public Boolean getCampagne() {
+    public int getCampagne() {
         return campagne;
     }
 
-    public void setCampagne(Boolean campagne) {
+    public void setCampagne(int campagne) {
         this.campagne = campagne;
     }
 
@@ -88,5 +98,29 @@ public class Voiture {
 
     public void setAgence(Agence agence) {
         this.agence = agence;
+    }
+
+    public Float getPrix_par_jour() {
+        return prix_par_jour;
+    }
+
+    public void setPrix_par_jour(Float prix_par_jour) {
+        this.prix_par_jour = prix_par_jour;
+    }
+
+    public String getImmatriculation() {
+        return immatriculation;
+    }
+
+    public void setImmatriculation(String immatriculation) {
+        this.immatriculation = immatriculation;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 }
