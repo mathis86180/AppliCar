@@ -21,9 +21,10 @@ public class Voiture implements Serializable, Parcelable {
     private String marque;
     private String modele;
     private Agence agence;
-    private Integer image;
+    private String image;
 
-    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat, String marque, String modele) {
+    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat,
+                   String marque, String modele) {
         this.loue = loue;
         this.ville = ville;
         this.campagne = campagne;
@@ -34,7 +35,8 @@ public class Voiture implements Serializable, Parcelable {
         this.modele = modele;
     }
 
-    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat, String marque, String modele, Agence agence) {
+    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat,
+                   String marque, String modele, Agence agence) {
         this.loue = loue;
         this.ville = ville;
         this.campagne = campagne;
@@ -46,8 +48,8 @@ public class Voiture implements Serializable, Parcelable {
         this.agence = agence;
     }
 
-    public Voiture(Integer id, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat, String marque, String modele, Agence agence, Integer image) {
-        this.id = id;
+    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat,
+                   String marque, String modele, Agence agence, String image) {
         this.loue = loue;
         this.ville = ville;
         this.campagne = campagne;
@@ -176,11 +178,11 @@ public class Voiture implements Serializable, Parcelable {
         this.etat = etat;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

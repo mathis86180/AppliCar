@@ -56,15 +56,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Database.getInstance(MainActivity.this);
-        Gerant g = new Gerant(1,"titi","titi","mail@mail.com");
-        Agence a = new Agence(1,"agence1",g);
-        Voiture v1 = new Voiture(1,1,1,20F,"cn-84-rdf","bon","renault","megane",a);
-        Voiture v2 = new Voiture(0,0,1,20F,"cn-83-rdf","neuve","renault","clio",a);
-
-        GerantDAO.insert(MainActivity.this, g);
-        AgenceDAO.insert(MainActivity.this, a);
-        VoitureDAO.insert(v1, MainActivity.this);
-        VoitureDAO.insert(v2, MainActivity.this);
     }
 
     @Override

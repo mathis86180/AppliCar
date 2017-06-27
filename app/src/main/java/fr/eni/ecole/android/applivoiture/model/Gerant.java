@@ -9,60 +9,27 @@ import java.io.Serializable;
  * Created by mseigle2016 on 26/06/2017.
  */
 
-public class Gerant implements Serializable, Parcelable{
+public class Gerant implements Serializable{
 
     private Integer id;
     private String nom;
     private String prenom;
     private String mail;
+    private String password;
 
-    public Gerant(Integer id, String nom, String prenom, String mail) {
+    public Gerant(Integer id, String nom, String prenom, String mail, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
+        this.password = password;
     }
-    public Gerant(String nom, String prenom, String mail) {
+    public Gerant(String nom, String prenom, String mail, String password) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
+        this.password = password;
     }
-
-    protected Gerant(Parcel in) {
-        nom = in.readString();
-        prenom = in.readString();
-        mail = in.readString();
-    }
-
-    public static final Creator<Gerant> CREATOR = new Creator<Gerant>() {
-        @Override
-        public Gerant createFromParcel(Parcel in) {
-            return new Gerant(in);
-        }
-
-        @Override
-        public Gerant[] newArray(int size) {
-            return new Gerant[size];
-        }
-    };
-
-    protected Gerant(Parcel in) {
-        nom = in.readString();
-        prenom = in.readString();
-        mail = in.readString();
-    }
-
-    public static final Creator<Gerant> CREATOR = new Creator<Gerant>() {
-        @Override
-        public Gerant createFromParcel(Parcel in) {
-            return new Gerant(in);
-        }
-
-        @Override
-        public Gerant[] newArray(int size) {
-            return new Gerant[size];
-        }
-    };
 
     public Integer getId() {
         return id;
@@ -96,15 +63,11 @@ public class Gerant implements Serializable, Parcelable{
         this.mail = mail;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getPassword() {
+        return password;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nom);
-        parcel.writeString(prenom);
-        parcel.writeString(mail);
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

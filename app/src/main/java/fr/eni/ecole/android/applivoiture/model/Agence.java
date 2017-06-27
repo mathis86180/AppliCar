@@ -75,6 +75,5 @@ public class Agence implements Serializable, Parcelable{
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nom);
-        parcel.writeParcelable(gerant, i);
     }
 }

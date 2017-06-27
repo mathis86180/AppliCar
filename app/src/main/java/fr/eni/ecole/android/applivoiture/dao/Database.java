@@ -24,6 +24,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String GERANT_NOM = "nom";
     private static final String GERANT_PRENOM = "prenom";
     private static final String GERANT_MAIL = "mail";
+    private static final String GERANT_PASSWORD = "password";
 
     private static final String AGENCE_ID = "id";
     private static final String AGENCE_NOM = "nom";
@@ -38,6 +39,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String VOITURE_MARQUE = "marque";
     private static final String VOITURE_MODELE = "modele";
     private static final String VOITURE_AGENCE_ID = "id_agence";
+    private static final String VOITURE_IMAGE = "image";
 
     // requetes
     private final static String QUERY_DELETE_TABLE_GERANT = "DROP TABLE IF EXISTS " + TBL_GERANT;
@@ -84,7 +86,8 @@ public class Database extends SQLiteOpenHelper {
                 GERANT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 GERANT_NOM + " VARCHAR," +
                 GERANT_PRENOM + " VARCHAR," +
-                GERANT_MAIL + " VARCHAR" +
+                GERANT_MAIL + " VARCHAR," +
+                GERANT_PASSWORD + " VARCHAR" +
                 "); ");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TBL_AGENCE + " ( " +
                 AGENCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -102,6 +105,7 @@ public class Database extends SQLiteOpenHelper {
                 VOITURE_MODELE + " VARCHAR," +
                 VOITURE_PRIX + " FLOAT," +
                 VOITURE_AGENCE_ID + " INTEGER," +
+                VOITURE_IMAGE + " VARCHAR," +
                 "FOREIGN KEY (" + VOITURE_AGENCE_ID + ") REFERENCES " + TBL_AGENCE + "(" + AGENCE_ID + ")" +
                 ");");
     }

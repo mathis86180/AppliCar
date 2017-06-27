@@ -27,9 +27,6 @@ public class VoitureDAO {
             " MODELE, ID_AGENCE FROM VOITURE WHERE ID = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
 
-
-
-
     public VoitureDAO()
     {
     }
@@ -71,6 +68,7 @@ public class VoitureDAO {
         values.put("modele", v.getModele());
         values.put("prix", v.getPrix_par_jour());
         values.put("id_agence", v.getAgence().getId());
+        values.put("image", v.getImage());
         Database.getInstance(context).getDb().insert("voiture",null,values);
     }
 

@@ -29,6 +29,7 @@ public class GerantDAO {
         values.put("nom", "test");
         values.put("prenom", "test");
         values.put("mail", "test@test.fr");
+        values.put("password", "password");
         Database.getInstance(context).getDb().insert("gerant",null,values);
     }
 

@@ -25,7 +25,14 @@
         android:id="@+id/imageViewPhoto"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/renault_megane"/>
+        android:src="@drawable/renault_megane" />
+
+    <TextView
+        android:id="@+id/cheminPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="test" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +72,7 @@
             android:text="@string/ville"/>
 
         <CheckBox
+            android:id="@+id/checkVille"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -75,6 +83,7 @@
             android:text="@string/campagne"/>
 
         <CheckBox
+            android:id="@+id/checkCampagne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -85,6 +94,7 @@
             android:text="@string/prix_jour_en"/>
 
         <EditText
+            android:id="@+id/textPrix"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"/>
@@ -105,6 +115,7 @@
             android:text="Marque :"/>
 
         <EditText
+            android:id="@+id/textMarque"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -123,6 +134,7 @@
             android:text="Immatriculation :"/>
 
         <EditText
+            android:id="@+id/textImmatriculation"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -141,6 +153,7 @@
             android:text="Modéle :"/>
 
         <EditText
+            android:id="@+id/textModele"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
@@ -159,6 +172,7 @@
             android:text="@string/etat"/>
 
         <EditText
+            android:id="@+id/textEtat"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"/>
