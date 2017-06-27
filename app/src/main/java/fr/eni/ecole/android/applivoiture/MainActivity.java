@@ -13,15 +13,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
+import fr.eni.ecole.android.applivoiture.dao.Database;
 import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
+import fr.eni.ecole.android.applivoiture.model.Agence;
+import fr.eni.ecole.android.applivoiture.model.Gerant;
+import fr.eni.ecole.android.applivoiture.model.Voiture;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private List<Voiture> listVoiture = new ArrayList<>();
     private static final int REQUEST_CODE = 1;
 
     @Override
@@ -49,11 +55,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Database.getInstance(MainActivity.this);
+        Gerant g = new Gerant(1,"titi","titi","mail@mail.com");
+        Agence a = new Agence(1,"agence1",g);
+        Voiture v1 = new Voiture(1,1,1,20F,"cn-84-rdf","bon","renault","megane",a);
+        Voiture v2 = new Voiture(0,0,1,20F,"cn-83-rdf","neuve","renault","clio",a);
 
-
-        VoitureDAO voitureDAO = new VoitureDAO(this);
-        AgenceDAO agenceDAO = new AgenceDAO(this);
-        GerantDAO gerantDAO = new GerantDAO(this);
+        GerantDAO.insert(MainActivity.this, g);
+        AgenceDAO.insert(MainActivity.this, a);
+        VoitureDAO.insert(v1, MainActivity.this);
+        VoitureDAO.insert(v2, MainActivity.this);
     }
 
     @Override
@@ -110,6 +121,7 @@ public class MainActivity extends AppCompatActivity
 
     public void voitureLoue(View view){
         Intent intent = new Intent(MainActivity.this,ListeVoitureLoueActivity.class);
+        intent.putParcelableArrayListExtra("data", (ArrayList<Voiture>) listVoiture);
         startActivity(intent);
     }
 }
