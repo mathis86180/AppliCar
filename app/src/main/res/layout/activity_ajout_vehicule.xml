@@ -23,7 +23,6 @@
 
     <ImageView
         android:id="@+id/imageViewPhoto"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/renault_megane"/>
@@ -34,18 +33,20 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/action_Photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/action_Photo"
-            android:title="Photo"
+            android:layout_weight="1"
+            android:title="@string/photo"
             android:src="@android:drawable/ic_menu_camera"
             android:onClick="onClicBoutonPhoto"/>
 
         <ImageButton
+            android:id="@+id/action_Gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/action_Gallery"
-            android:title="Gallery"
+            android:layout_weight="1"
+            android:title="@string/gallery"
             android:src="@android:drawable/ic_menu_gallery"
             android:onClick="onClicBoutonGallery"/>
 
@@ -54,6 +55,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -68,6 +71,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
             android:text="@string/campagne"/>
 
         <CheckBox
@@ -77,10 +81,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
             android:text="@string/prix_jour_en"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"/>
 
@@ -90,6 +95,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -98,7 +105,7 @@
             android:text="Marque :"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -106,6 +113,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -114,7 +123,7 @@
             android:text="Immatriculation :"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -122,6 +131,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -130,7 +141,7 @@
             android:text="Modéle :"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
@@ -138,6 +149,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -146,8 +159,9 @@
             android:text="@string/etat"/>
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
 
     </LinearLayout>
 

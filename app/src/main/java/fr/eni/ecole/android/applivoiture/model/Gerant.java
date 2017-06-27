@@ -46,6 +46,24 @@ public class Gerant implements Serializable, Parcelable{
         }
     };
 
+    protected Gerant(Parcel in) {
+        nom = in.readString();
+        prenom = in.readString();
+        mail = in.readString();
+    }
+
+    public static final Creator<Gerant> CREATOR = new Creator<Gerant>() {
+        @Override
+        public Gerant createFromParcel(Parcel in) {
+            return new Gerant(in);
+        }
+
+        @Override
+        public Gerant[] newArray(int size) {
+            return new Gerant[size];
+        }
+    };
+
     public Integer getId() {
         return id;
     }

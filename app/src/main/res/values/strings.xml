@@ -32,4 +32,6 @@
     <string name="campagne">Campagne :</string>
     <string name="prix_jour_en">Prix/jour en € :</string>
     <string name="etat">Etat :</string>
+    <string name="photo">Photo</string>
+    <string name="gallery">Gallery</string>
 </resources>
