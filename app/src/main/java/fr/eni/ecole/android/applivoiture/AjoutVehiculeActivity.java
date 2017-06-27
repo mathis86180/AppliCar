@@ -135,7 +135,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
                 Gerant g = new Gerant("Fillon","Aurelien","fillonau@hotmail.fr", "af091294");
                 Agence agenceAjout = new Agence("Fictive SA",g);
 
-                if(villeAjout==0 && campagneAjout==0){
+                if(villeAjout==1 || campagneAjout==1){
                     if(!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()
                             && !ajoutModele.isEmpty() && !ajoutEtat.isEmpty()){
                         Voiture newVoiture = new Voiture(loueAjout, villeAjout, campagneAjout, prixAjout, ajoutImmatriculation, ajoutEtat,
@@ -172,6 +172,16 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
+
+        TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
+        String ajoutChemin = cheminPhoto.getText().toString();
+        File file = new File(ajoutChemin);
+        boolean deleted = file.delete();
+
+        if(deleted==false){
+            Toast.makeText(AjoutVehiculeActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void onClicBoutonPhoto(View view){
@@ -291,6 +301,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     }
 
     private void videAjout(){
+        ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
         CheckBox ville = (CheckBox) findViewById(R.id.checkVille);
         CheckBox campagne = (CheckBox) findViewById(R.id.checkCampagne);
@@ -300,6 +311,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
         EditText modele = (EditText) findViewById(R.id.textModele);
         EditText etat = (EditText) findViewById(R.id.textEtat);
 
+        image.setImageResource(R.drawable.renault_megane);
         cheminPhoto.setText("");
         ville.setChecked(false);
         campagne.setChecked(false);
