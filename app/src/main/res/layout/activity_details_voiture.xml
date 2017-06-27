@@ -4,11 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="fr.eni.ecole.android.applivoiture.DetailsVoitureActivity">
+        <ImageView
+            android:id="@+id/imageVoiture"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/renault_megane"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src=""/>
-
+            <TextView
+                android:id="@+id/modele_marque"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="modele + marque"
+                />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prix par jour à la location : "
+            />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/prix"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="prix/j"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="immatriculation : "
+                />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/immatriculation"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="immatriculation"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Route adaptée pour la voiture : "
+                />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/terrain"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="campagne/ville"
+            />
+        </LinearLayout>
 </LinearLayout>

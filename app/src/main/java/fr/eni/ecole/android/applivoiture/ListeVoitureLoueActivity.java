@@ -22,13 +22,8 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_voiture_loue);
         listViewVoiture = (ListView) findViewById(R.id.listViewVoiture);
-
-            Gerant g = new Gerant(1,"titi","titi","mail@mail.com");
-
-            Agence a = new Agence(1,"agence1",g);
-            listVoiture.add(new Voiture(1,1,0,1,20F,"cn-86-rdf","loué","renault","megane",a,R.drawable.renaultMegane));
-            listVoiture.add(new Voiture(2,1,0,1,20F,"cn-86-rdf","loué","renault","clio",a));
-            listVoiture.add(new Voiture(3,1,0,1,20F,"cn-86-rdf","loué","renault","captur",a));
+        Intent intent = getIntent();
+        listVoiture = getIntent().getParcelableArrayListExtra("data");
 
                 listViewVoiture.setAdapter(new ListeVoitureLoueAdapter(ListeVoitureLoueActivity.this,R.layout.ma_liste, listVoiture));
 
@@ -40,7 +35,6 @@ public class ListeVoitureLoueActivity extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("object", listVoiture.get(position));
                         intent.putExtras(bundle);
-
                         startActivity(intent);
                     }
                 });
