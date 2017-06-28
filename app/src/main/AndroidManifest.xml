@@ -34,8 +34,7 @@
             android:parentActivityName=".MainActivity"/>
 
         <activity android:name=".Activity.DetailsVoitureActivity"
-            android:label="DetailsVoitureActivity"
-            android:parentActivityName=".Activity.ListeVoitureLoueActivity">
+            android:label="DetailsVoitureActivity">
         </activity>
 
         <activity
@@ -43,8 +42,14 @@
             android:label="AjoutVehiculeActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".Activity.ModifierActivity"
+            android:label="ModifierActivity">
+        </activity>
+
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.InscriptionActivity"></activity>
+
+        <activity android:name=".Activity.InscriptionActivity" />
     </application>
 
 </manifest>

@@ -48,7 +48,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     private Uri mImageCaptureUri;
     private ImageButton action_Photo;
 
-    String cheminDefault = "default";
+    String cheminDefault = "defaut";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +82,6 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.action_Ajouter:
-
                 Float prixAjout = null;
                 int villeAjout = -1;
                 int campagneAjout = -1;
@@ -130,24 +129,25 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
                 Gerant g = new Gerant("Fillon","Aurelien","fillonau@hotmail.fr", "af091294");
                 Agence agenceAjout = new Agence("Fictive SA",g);
 
-                if(villeAjout==1 || campagneAjout==1){
-                    if(!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()
-                            && !ajoutModele.isEmpty() && !ajoutEtat.isEmpty()){
-                        Voiture newVoiture = new Voiture(loueAjout, villeAjout, campagneAjout, prixAjout, ajoutImmatriculation, ajoutEtat,
-                                ajoutMarque, ajoutModele, agenceAjout, ajoutChemin);
+                if (!cheminPhoto.getText().equals(cheminDefault)) {
+                    if (villeAjout == 1 || campagneAjout == 1) {
+                        if (!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()
+                                && !ajoutModele.isEmpty() && !ajoutEtat.isEmpty()) {
+                            Voiture newVoiture = new Voiture(loueAjout, villeAjout, campagneAjout, prixAjout, ajoutImmatriculation, ajoutEtat,
+                                    ajoutMarque, ajoutModele, agenceAjout, ajoutChemin);
 
-                        VoitureDAO.insert(newVoiture, AjoutVehiculeActivity.this);
-                        Toast.makeText(AjoutVehiculeActivity.this, "La voiture a bien été ajouté :)", Toast.LENGTH_LONG).show();
-                        videAjout();
-                    }
-                    else
-                    {
-                        Toast.makeText(AjoutVehiculeActivity.this, "Tout les champs textes sont obligatoires !", Toast.LENGTH_LONG).show();
+                            VoitureDAO.insert(newVoiture, AjoutVehiculeActivity.this);
+                            Toast.makeText(AjoutVehiculeActivity.this, "La voiture a bien été ajouté :)", Toast.LENGTH_LONG).show();
+                            videAjout();
+                        } else {
+                            Toast.makeText(AjoutVehiculeActivity.this, "Tout les champs textes sont obligatoires !", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(AjoutVehiculeActivity.this, "Vous devez au moins valider la Ville ou la Campagne !", Toast.LENGTH_LONG).show();
                     }
                 }
-                else
-                {
-                    Toast.makeText(AjoutVehiculeActivity.this, "Vous devez au moins valider la Ville ou la Campagne !", Toast.LENGTH_LONG).show();
+                else {
+                    Toast.makeText(AjoutVehiculeActivity.this, "Vous devez changer la photo !", Toast.LENGTH_LONG).show();
                 }
                 break;
 
@@ -249,7 +249,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
             Bitmap bit = (Bitmap) data.getExtras().get("data");
 
             ByteArrayOutputStream dataImage = new ByteArrayOutputStream();
-            bit.compress(Bitmap.CompressFormat.JPEG, 80, dataImage);
+            bit.compress(Bitmap.CompressFormat.JPEG, 100, dataImage);
             ByteArrayOutputStream bos = (ByteArrayOutputStream)dataImage;
 
             // Affichage  de l'image

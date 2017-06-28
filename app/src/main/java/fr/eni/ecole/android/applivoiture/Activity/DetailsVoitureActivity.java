@@ -60,9 +60,6 @@ public class DetailsVoitureActivity extends AppCompatActivity {
             imageVoiture.setImageBitmap(myBitmap);
         }
 
-        /*Picasso.with(DetailsVoitureActivity.this)
-            .load(v.getImage())
-            .into(imageVoiture);*/
     }
 
     @Override
@@ -81,9 +78,9 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         switch (id){
 
             case R.id.action_Modifier:
-                int idAModif = getId();
+                String immatriculationAmodif = getImmatriculation();
                 intent = new Intent(DetailsVoitureActivity.this, ModifierActivity.class);
-                intent.putExtra("id", idAModif);
+                intent.putExtra("immatriculation", immatriculationAmodif);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
 
@@ -99,14 +96,9 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-    }
-
-    private int getId(){
+    private String getImmatriculation(){
         Intent intent = getIntent();
-        int id = intent.getIntExtra("voitureId", 1);
-        return id;
+        String immatriculation = intent.getStringExtra("immatriculation");
+        return immatriculation;
     }
 }

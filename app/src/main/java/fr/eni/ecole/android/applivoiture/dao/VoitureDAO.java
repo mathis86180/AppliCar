@@ -29,7 +29,7 @@ public class VoitureDAO {
             " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 0";
     private final static String QUERY_FIND_ONE = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE, IMAGE FROM VOITURE WHERE IMMATRICULATION = ?";
-    private final static String QUERY_GET_ONE = "ID = ?";
+    private final static String QUERY_GET_ONE = "IMMATRICULATION = ?";
 
 
     public static String getQuerySelectLouees() {
@@ -82,6 +82,21 @@ public class VoitureDAO {
         values.put("id_agence", v.getAgence().getId());
         values.put("image", v.getImage());
         Database.getInstance(context).getDb().insert("voiture",null,values);
+    }
+
+    public static long update(Voiture v, Context context){
+        ContentValues values = new ContentValues();
+        String immatriculation = v.getImmatriculation();
+        values.put("loue", v.getLoue());
+        values.put("ville", v.getVille());
+        values.put("campagne", v.getCampagne());
+        values.put("etat", v.getEtat());
+        values.put("marque", v.getMarque());
+        values.put("modele", v.getModele());
+        values.put("prix", v.getPrix_par_jour());
+        values.put("id_agence", v.getAgence().getId());
+        values.put("image", v.getImage());
+        return Database.getInstance(context).getDb().update(TABLE_NAME, values, QUERY_GET_ONE, new String[] {immatriculation});
     }
 
     public static Voiture findOneById(String immatriculationQuery,Context context)
