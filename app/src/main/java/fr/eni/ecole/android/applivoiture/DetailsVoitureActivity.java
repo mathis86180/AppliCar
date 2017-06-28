@@ -48,8 +48,8 @@ public class DetailsVoitureActivity extends AppCompatActivity {
             terrain.setText(ville);
         }
 
-            /*Picasso.with(DetailsVoitureActivity.this)
+            Picasso.with(DetailsVoitureActivity.this)
                     .load(v.getImage())
-                    .into(imageVoiture);*/
+                    .into(imageVoiture);
     }
 }

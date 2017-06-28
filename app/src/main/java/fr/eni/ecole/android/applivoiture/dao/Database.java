@@ -101,11 +101,11 @@ public class Database extends SQLiteOpenHelper {
                 CLIENT_NOM + " VARCHAR, " +
                 CLIENT_PRENOM + " VARCHAR, " +
                 CLIENT_ADRESSE + " VARCHAR, " +
-                CLIENT_VILLE + " VARCHAR)"
-        );
+                CLIENT_VILLE + " VARCHAR " +
+                ");");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TBL_AGENCE + " ( " +
                 AGENCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                AGENCE_NOM + " VARCHAR, " +
+                AGENCE_NOM + " VARCHAR " +
                 "); ");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TBL_GERANT + " (" +
@@ -113,8 +113,8 @@ public class Database extends SQLiteOpenHelper {
                 GERANT_NOM + " VARCHAR," +
                 GERANT_PRENOM + " VARCHAR," +
                 GERANT_MAIL + " VARCHAR," +
-                GERANT_PASSWORD + " VARCHAR" +
-                GERANT_AGENCE_ID + " INTEGER" +
+                GERANT_PASSWORD + " VARCHAR," +
+                GERANT_AGENCE_ID + " INTEGER," +
                 "FOREIGN KEY (" + GERANT_AGENCE_ID + ") REFERENCES " + TBL_AGENCE + "(" + AGENCE_ID + ")" +
                 "); ");
 
@@ -138,7 +138,8 @@ public class Database extends SQLiteOpenHelper {
                 LOCATION_DATE_FIN + " DATE, " +
                 "FOREIGN KEY (" + LOCATION_CLIENT_ID + ") REFERENCES " + TBL_CLIENT + "(" + CLIENT_ID + "), " +
                 "FOREIGN KEY (" + LOCATION_VOITURE_IMMATRICULATION + ") REFERENCES " + TBL_VOITURE + "(" + VOITURE_IMMATRICULATION + "), " +
-                "PRIMARY KEY (" + LOCATION_CLIENT_ID + ", " + VOITURE_IMMATRICULATION + "))");
+                "PRIMARY KEY (" + LOCATION_CLIENT_ID + ", " + LOCATION_VOITURE_IMMATRICULATION + ")" +
+                ");");
     }
 
     private static void open() {
