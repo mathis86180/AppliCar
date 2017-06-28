@@ -34,4 +34,5 @@
     <string name="etat">Etat :</string>
     <string name="photo">Photo</string>
     <string name="gallery">Gallery</string>
+    <string name="defaut">defaut</string>
 </resources>

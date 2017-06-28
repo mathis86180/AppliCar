@@ -57,10 +57,10 @@ public class DetailsVoitureActivity extends AppCompatActivity {
 
         File imgFile = new  File(v.getImage());
 
-        /*if(imgFile.exists()){
+        if(imgFile.exists()){
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             imageVoiture.setImageBitmap(myBitmap);
-        }*/
+        }
 
         Picasso.with(DetailsVoitureActivity.this)
             .load(imgFile)
