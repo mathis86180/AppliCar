@@ -128,7 +128,7 @@ public class Database extends SQLiteOpenHelper {
                 VOITURE_MODELE + " VARCHAR," +
                 VOITURE_PRIX + " FLOAT," +
                 VOITURE_AGENCE_ID + " INTEGER," +
-                VOITURE_IMAGE + " VARCHAR," +
+                VOITURE_IMAGE + " TEXT," +
                 "FOREIGN KEY (" + VOITURE_AGENCE_ID + ") REFERENCES " + TBL_AGENCE + "(" + AGENCE_ID + ")" +
                 ");");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TBL_LOCATION + " ( " +

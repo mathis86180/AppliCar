@@ -28,7 +28,7 @@ public class VoitureDAO {
     private final static String QUERY_SELECT_NON_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 0";
     private final static String QUERY_FIND_ONE = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
-            " MODELE, ID_AGENCE FROM VOITURE WHERE IMMATRICULATION = ?";
+            " MODELE, ID_AGENCE, IMAGE FROM VOITURE WHERE IMMATRICULATION = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
 
 
@@ -98,7 +98,8 @@ public class VoitureDAO {
             String modele = c.getString(c.getColumnIndex("modele"));
             String marque = c.getString(c.getColumnIndex("marque"));
             Float prix = c.getFloat(c.getColumnIndex("prix"));
-            v = new Voiture(loue,ville,campagne,prix,immatriculation,etat,marque,modele);
+            String image = c.getString(c.getColumnIndex("image"));
+            v = new Voiture(loue,ville,campagne,prix,immatriculation,etat,marque,modele,image);
         }
         return v;
     }

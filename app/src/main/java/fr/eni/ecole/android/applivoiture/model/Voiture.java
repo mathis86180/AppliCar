@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by mseigle2016 on 26/06/2017.
  */
 
-public class Voiture implements Serializable, Parcelable {
+public class Voiture implements Serializable {
 
     private Integer id;
     private int loue;
@@ -22,6 +22,19 @@ public class Voiture implements Serializable, Parcelable {
     private String modele;
     private Agence agence;
     private String image;
+
+    public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat,
+                   String marque, String modele, String image) {
+        this.loue = loue;
+        this.ville = ville;
+        this.campagne = campagne;
+        this.prix_par_jour = prix_par_jour;
+        this.immatriculation = immatriculation;
+        this.etat = etat;
+        this.marque = marque;
+        this.modele = modele;
+        this.image = image;
+    }
 
     public Voiture(int loue, int ville, int campagne, Float prix_par_jour, String immatriculation, String etat,
                    String marque, String modele) {
@@ -62,41 +75,6 @@ public class Voiture implements Serializable, Parcelable {
         this.image = image;
     }
 
-    public Voiture(Integer id, int loue, int ville, int campagne, Float prix_par_jour, String immatriculation,
-                   String etat, String marque, String modele, Agence agence) {
-        this.id = id;
-        this.loue = loue;
-        this.ville = ville;
-        this.campagne = campagne;
-        this.prix_par_jour = prix_par_jour;
-        this.immatriculation = immatriculation;
-        this.etat = etat;
-        this.marque = marque;
-        this.modele = modele;
-        this.agence = agence;
-    }
-
-    protected Voiture(Parcel in) {
-        loue = in.readInt();
-        ville = in.readInt();
-        campagne = in.readInt();
-        immatriculation = in.readString();
-        etat = in.readString();
-        marque = in.readString();
-        modele = in.readString();
-    }
-
-    public static final Creator<Voiture> CREATOR = new Creator<Voiture>() {
-        @Override
-        public Voiture createFromParcel(Parcel in) {
-            return new Voiture(in);
-        }
-
-        @Override
-        public Voiture[] newArray(int size) {
-            return new Voiture[size];
-        }
-    };
 
     public Integer getId() {
         return id;
@@ -184,23 +162,6 @@ public class Voiture implements Serializable, Parcelable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(loue);
-        parcel.writeInt(ville);
-        parcel.writeInt(campagne);
-        parcel.writeString(immatriculation);
-        parcel.writeString(etat);
-        parcel.writeString(marque);
-        parcel.writeString(modele);
-        parcel.writeDouble(prix_par_jour);
     }
 
     @Override
