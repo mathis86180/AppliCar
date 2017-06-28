@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="fr.eni.ecole.android.applivoiture.DetailsVoitureActivity">
+    tools:context="fr.eni.ecole.android.applivoiture.Activity.DetailsVoitureActivity">
         <ImageView
             android:id="@+id/imageVoiture"
             android:layout_gravity="center_horizontal"

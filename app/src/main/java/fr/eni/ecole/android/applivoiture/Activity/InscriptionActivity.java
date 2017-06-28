@@ -1,7 +1,9 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import fr.eni.ecole.android.applivoiture.R;
 
 public class InscriptionActivity extends AppCompatActivity {
 

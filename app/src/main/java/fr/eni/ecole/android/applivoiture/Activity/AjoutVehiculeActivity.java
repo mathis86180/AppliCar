@@ -1,4 +1,4 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -34,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Agence;
 import fr.eni.ecole.android.applivoiture.model.Gerant;
@@ -46,6 +47,8 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     private static final String TAG = "Ajout";
     private Uri mImageCaptureUri;
     private ImageButton action_Photo;
+
+    String cheminDefault = "default";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -304,7 +307,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
         EditText etat = (EditText) findViewById(R.id.textEtat);
 
         image.setImageResource(R.drawable.renault_megane);
-        cheminPhoto.setText("");
+        cheminPhoto.setText(cheminDefault);
         ville.setChecked(false);
         campagne.setChecked(false);
         prix.setText("");
@@ -316,7 +319,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
     private void deletePhoto(String cheminPhoto){
 
-        if(!cheminPhoto.equals("default")) {
+        if(!cheminPhoto.equals(cheminDefault)) {
             File file = new File(cheminPhoto);
             boolean deleted = file.delete();
 

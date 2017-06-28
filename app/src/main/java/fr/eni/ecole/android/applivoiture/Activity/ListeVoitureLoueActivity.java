@@ -1,9 +1,8 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,6 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.Database;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
