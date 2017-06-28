@@ -3,11 +3,9 @@ package fr.eni.ecole.android.applivoiture;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,12 +21,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,8 +33,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.util.Date;
 
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Agence;
@@ -51,8 +45,6 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 2;
     private static final String TAG = "Ajout";
     private Uri mImageCaptureUri;
-    private ImageView image_maison;
-    private String cheminImage;
     private ImageButton action_Photo;
 
     @Override
@@ -62,7 +54,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -175,16 +167,16 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
         String ajoutChemin = cheminPhoto.getText().toString();
-        File file = new File(ajoutChemin);
-        boolean deleted = file.delete();
-
-        if(deleted==false){
-            Toast.makeText(AjoutVehiculeActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
-        }
+        deletePhoto(ajoutChemin);
 
     }
 
     public void onClicBoutonPhoto(View view){
+
+        TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
+        String cheminTestPhoto = cheminPhoto.getText().toString();
+
+        deletePhoto(cheminTestPhoto);
 
         // Lancement de l'action : capture de l'image
         Intent intent_prendrePhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -320,5 +312,17 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
         immatriculation.setText("");
         modele.setText("");
         etat.setText("");
+    }
+
+    private void deletePhoto(String cheminPhoto){
+
+        if(!cheminPhoto.equals("default")) {
+            File file = new File(cheminPhoto);
+            boolean deleted = file.delete();
+
+            if (deleted == false) {
+                Toast.makeText(AjoutVehiculeActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
