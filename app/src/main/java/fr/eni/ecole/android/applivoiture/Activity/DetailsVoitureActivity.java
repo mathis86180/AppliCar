@@ -1,12 +1,16 @@
 package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 
 import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
@@ -49,9 +53,16 @@ public class DetailsVoitureActivity extends AppCompatActivity {
             terrain.setText(ville);
         }
 
-            /*Picasso.with(DetailsVoitureActivity.this)
-                    .load(v.getImage())
-                    .into(imageVoiture);*/
+        File imgFile = new  File(v.getImage());
+
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            imageVoiture.setImageBitmap(myBitmap);
+        }
+
+        /*Picasso.with(DetailsVoitureActivity.this)
+            .load(v.getImage())
+            .into(imageVoiture);*/
     }
 
     @Override
