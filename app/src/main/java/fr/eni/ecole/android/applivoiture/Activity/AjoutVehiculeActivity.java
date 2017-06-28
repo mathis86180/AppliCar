@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import fr.eni.ecole.android.applivoiture.R;
+import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Agence;
 import fr.eni.ecole.android.applivoiture.model.Gerant;
@@ -127,8 +128,12 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
                 int loueAjout = 0;
 
                 // TODO : A remplacer avec utilisation de la BDD
-                Gerant g = new Gerant("Fillon","Aurelien","fillonau@hotmail.fr", "af091294");
-                Agence agenceAjout = new Agence("Fictive SA",g);
+
+                Agence agenceAjout = AgenceDAO.findOneById(1,AjoutVehiculeActivity.this);
+                if(agenceAjout == null)
+                {
+                    AgenceDAO.insert(AjoutVehiculeActivity.this, agenceAjout);
+                }
 
                 if(villeAjout==1 || campagneAjout==1){
                     if(!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()

@@ -14,10 +14,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.Date;
+
 import fr.eni.ecole.android.applivoiture.Activity.AjoutVehiculeActivity;
 import fr.eni.ecole.android.applivoiture.Activity.ListeVoitureLoueActivity;
 import fr.eni.ecole.android.applivoiture.Activity.LoginActivity;
+import fr.eni.ecole.android.applivoiture.dao.ClientDAO;
 import fr.eni.ecole.android.applivoiture.dao.Database;
+import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
+import fr.eni.ecole.android.applivoiture.dao.LocationDAO;
+import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
+import fr.eni.ecole.android.applivoiture.model.Client;
+import fr.eni.ecole.android.applivoiture.model.Gerant;
+import fr.eni.ecole.android.applivoiture.model.Location;
+import fr.eni.ecole.android.applivoiture.model.Voiture;
 
 
 public class MainActivity extends AppCompatActivity
@@ -53,6 +63,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Database.getInstance(MainActivity.this);
+
     }
 
     @Override

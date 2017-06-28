@@ -16,6 +16,7 @@ public class Gerant implements Serializable{
     private String prenom;
     private String mail;
     private String password;
+    private Agence agence;
 
     public Gerant(Integer id, String nom, String prenom, String mail, String password) {
         this.id = id;
@@ -24,11 +25,12 @@ public class Gerant implements Serializable{
         this.mail = mail;
         this.password = password;
     }
-    public Gerant(String nom, String prenom, String mail, String password) {
+    public Gerant(String nom, String prenom, String mail, String password, Agence agence) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.password = password;
+        this.agence = agence;
     }
 
     public Integer getId() {
@@ -69,5 +71,13 @@ public class Gerant implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 }

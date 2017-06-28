@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 
 import fr.eni.ecole.android.applivoiture.R;
@@ -55,14 +57,14 @@ public class DetailsVoitureActivity extends AppCompatActivity {
 
         File imgFile = new  File(v.getImage());
 
-        if(imgFile.exists()){
+        /*if(imgFile.exists()){
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             imageVoiture.setImageBitmap(myBitmap);
-        }
+        }*/
 
-        /*Picasso.with(DetailsVoitureActivity.this)
-            .load(v.getImage())
-            .into(imageVoiture);*/
+        Picasso.with(DetailsVoitureActivity.this)
+            .load(imgFile)
+            .into(imageVoiture);
     }
 
     @Override
