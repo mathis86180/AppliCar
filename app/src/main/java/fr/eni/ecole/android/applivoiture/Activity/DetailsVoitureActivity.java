@@ -83,9 +83,9 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         switch (id){
 
             case R.id.action_Modifier:
-                int idAModif = getId();
+                String idAModif = getId();
                 intent = new Intent(DetailsVoitureActivity.this, ModifierActivity.class);
-                intent.putExtra("id", idAModif);
+                intent.putExtra("immatriculation", idAModif);
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
 
@@ -106,9 +106,9 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    private int getId(){
+    private String getId(){
         Intent intent = getIntent();
-        int id = intent.getIntExtra("voitureId", 1);
+        String id = intent.getStringExtra("immatriculation");
         return id;
     }
 }

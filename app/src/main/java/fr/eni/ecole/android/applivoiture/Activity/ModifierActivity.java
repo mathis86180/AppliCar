@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import fr.eni.ecole.android.applivoiture.R;
+import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Agence;
 import fr.eni.ecole.android.applivoiture.model.Gerant;
@@ -62,6 +64,8 @@ public class ModifierActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_vehicule);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         immatriculationModif = intent.getStringExtra("immatriculation");
@@ -164,8 +168,12 @@ public class ModifierActivity extends AppCompatActivity {
                 int loueAjout = 0;
 
                 // TODO : A remplacer avec utilisation de la BDD
-                Gerant g = new Gerant("Fillon","Aurelien","fillonau@hotmail.fr", "af091294");
-                Agence agenceAjout = new Agence("Fictive SA",g);
+                Agence agenceAjout = AgenceDAO.findOneById(1,ModifierActivity.this);
+                if(agenceAjout == null)
+                {
+                    agenceAjout=new Agence(1,"dkhpsdfkfhl");
+                    AgenceDAO.insert(ModifierActivity.this, agenceAjout);
+                }
 
                 if (!cheminPhoto.getText().equals(cheminDefault)) {
                     if (villeAjout == 1 || campagneAjout == 1) {
