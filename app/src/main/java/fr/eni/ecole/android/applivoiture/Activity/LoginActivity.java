@@ -1,4 +1,4 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import fr.eni.ecole.android.applivoiture.MainActivity;
+import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.Database;
 import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
 import fr.eni.ecole.android.applivoiture.model.Gerant;

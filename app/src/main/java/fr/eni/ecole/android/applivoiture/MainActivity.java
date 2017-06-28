@@ -14,6 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import fr.eni.ecole.android.applivoiture.Activity.AjoutVehiculeActivity;
+import fr.eni.ecole.android.applivoiture.Activity.ListeVoitureLoueActivity;
+import fr.eni.ecole.android.applivoiture.Activity.LoginActivity;
 import fr.eni.ecole.android.applivoiture.dao.Database;
 
 

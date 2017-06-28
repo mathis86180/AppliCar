@@ -1,4 +1,4 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
 
 /**

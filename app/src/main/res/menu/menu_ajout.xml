@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="fr.eni.ecole.android.applivoiture.AjoutVehiculeActivity">
+    tools:context="fr.eni.ecole.android.applivoiture.Activity.AjoutVehiculeActivity">
 
     <item android:id="@+id/action_Ajouter"
         android:title="Ajouter"

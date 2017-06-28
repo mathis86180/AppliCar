@@ -1,21 +1,20 @@
-package fr.eni.ecole.android.applivoiture;
+package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.content.Intent;
-import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import fr.eni.ecole.android.applivoiture.dao.Database;
+import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
 
 public class DetailsVoitureActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CODE = 18;
     private ImageView imageVoiture;
     private TextView modeleMarque;
     private TextView prix;
@@ -26,6 +25,8 @@ public class DetailsVoitureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_voiture);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         imageVoiture = (ImageView) findViewById(R.id.imageVoiture);
         modeleMarque = (TextView) findViewById(R.id.modele_marque);
         prix = (TextView) findViewById(R.id.prix);
@@ -51,5 +52,50 @@ public class DetailsVoitureActivity extends AppCompatActivity {
             /*Picasso.with(DetailsVoitureActivity.this)
                     .load(v.getImage())
                     .into(imageVoiture);*/
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        Intent intent;
+
+        switch (id){
+
+            case R.id.action_Modifier:
+                int idAModif = getId();
+                intent = new Intent(DetailsVoitureActivity.this, ModifierActivity.class);
+                intent.putExtra("id", idAModif);
+                startActivityForResult(intent, REQUEST_CODE);
+                break;
+
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+    }
+
+    private int getId(){
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("voitureId", 1);
+        return id;
     }
 }
