@@ -202,4 +202,21 @@ public class Voiture implements Serializable, Parcelable {
         parcel.writeString(modele);
         parcel.writeDouble(prix_par_jour);
     }
+
+    @Override
+    public String toString() {
+        return "Voiture{" +
+                "id=" + id +
+                ", loue=" + loue +
+                ", ville=" + ville +
+                ", campagne=" + campagne +
+                ", prix_par_jour=" + prix_par_jour +
+                ", immatriculation='" + immatriculation + '\'' +
+                ", etat='" + etat + '\'' +
+                ", marque='" + marque + '\'' +
+                ", modele='" + modele + '\'' +
+                ", agence=" + agence +
+                ", image=" + image +
+                '}';
+    }
 }

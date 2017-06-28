@@ -13,22 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import java.util.ArrayList;
-import java.util.List;
 
-import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
 import fr.eni.ecole.android.applivoiture.dao.Database;
-import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
-import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
-import fr.eni.ecole.android.applivoiture.model.Agence;
-import fr.eni.ecole.android.applivoiture.model.Gerant;
-import fr.eni.ecole.android.applivoiture.model.Voiture;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private List<Voiture> listVoiture = new ArrayList<>();
     private static final int REQUEST_CODE = 1;
+
+    private Integer location = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +104,22 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void voitureLoue(View view){
+    public void getListVoiture(View view){
+        switch (view.getId()){
+            case R.id.listLoueeButton:
+                location = 1;
+                break;
+            case R.id.listNonLoueeButton:
+                location = 0;
+                break;
+        }
         Intent intent = new Intent(MainActivity.this,ListeVoitureLoueActivity.class);
-        intent.putParcelableArrayListExtra("data", (ArrayList<Voiture>) listVoiture);
+        intent.putExtra("location",location);
+        startActivity(intent);
+    }
+
+    public void openPageConnexion(View view){
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }

@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_margin="10dp">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -47,7 +47,7 @@
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <TextView
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="center_horizontal"

@@ -23,18 +23,31 @@ public class VoitureDAO {
     private final static String TABLE_NAME = "VOITURE";
     private final static String QUERY_SELECT_ALL = "SELECT ID, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE FROM VOITURE";
-    private final static String QUERY_FIND_ONE = "SELECT ID, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
-            " MODELE, ID_AGENCE FROM VOITURE WHERE ID = ?";
+    private final static String QUERY_SELECT_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
+            " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 1";
+    private final static String QUERY_SELECT_NON_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
+            " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 0";
+    private final static String QUERY_FIND_ONE = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
+            " MODELE, ID_AGENCE FROM VOITURE WHERE IMMATRICULATION = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
+
+
+    public static String getQuerySelectLouees() {
+        return QUERY_SELECT_LOUEES;
+    }
+
+    public static String getQuerySelectNonLouees() {
+        return QUERY_SELECT_NON_LOUEES;
+    }
 
     public VoitureDAO()
     {
     }
 
-    public List<Voiture> findVoitureLouees(Context context)
+    public static List<Voiture> findVoitures(Context context, String query)
     {
         List<Voiture> maListe = new ArrayList<>();
-        Cursor c = Database.getInstance(context).getDb().rawQuery(QUERY_SELECT_ALL, null);
+        Cursor c = Database.getInstance(context).getDb().rawQuery(query, null);
         if (c.moveToFirst()) {
             while (!c.isAfterLast()) {
 
@@ -55,7 +68,6 @@ public class VoitureDAO {
         return maListe;
     }
 
-
     public static void insert(Voiture v, Context context)
     {
         ContentValues values = new ContentValues();
@@ -70,6 +82,25 @@ public class VoitureDAO {
         values.put("id_agence", v.getAgence().getId());
         values.put("image", v.getImage());
         Database.getInstance(context).getDb().insert("voiture",null,values);
+    }
+
+    public static Voiture findOneById(String immatriculationQuery,Context context)
+    {
+        Voiture v = null;
+        Cursor c = Database.getInstance(context).getDb().rawQuery(QUERY_FIND_ONE,new String[] {immatriculationQuery});
+        if(c.getCount() > 0) {
+            c.moveToFirst();
+            String immatriculation = c.getString(c.getColumnIndex("immatriculation"));
+            Integer campagne = c.getInt(c.getColumnIndex("campagne"));
+            Integer ville = c.getInt(c.getColumnIndex("ville"));
+            Integer loue = c.getInt(c.getColumnIndex("loue"));
+            String etat = c.getString(c.getColumnIndex("etat"));
+            String modele = c.getString(c.getColumnIndex("modele"));
+            String marque = c.getString(c.getColumnIndex("marque"));
+            Float prix = c.getFloat(c.getColumnIndex("prix"));
+            v = new Voiture(loue,ville,campagne,prix,immatriculation,etat,marque,modele);
+        }
+        return v;
     }
 
 }

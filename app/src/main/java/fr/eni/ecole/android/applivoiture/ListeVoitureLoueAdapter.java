@@ -43,7 +43,6 @@ public class ListeVoitureLoueAdapter extends ArrayAdapter<Voiture> {
         {
             convertView = inflater.inflate(resId, null);
             viewHolder = new ViewHolder();
-            viewHolder.textViewNom = (TextView) convertView.findViewById(R.id.nom);
             viewHolder.textViewMarque = (TextView) convertView.findViewById(R.id.marque);
             viewHolder.textViewModele = (TextView) convertView.findViewById(R.id.modele);
             convertView.setTag(viewHolder);
@@ -52,15 +51,14 @@ public class ListeVoitureLoueAdapter extends ArrayAdapter<Voiture> {
         }
         Voiture item = getItem(position);
 
-        viewHolder.textViewNom.setText(item.getModele());
         viewHolder.textViewMarque.setText(item.getMarque());
         viewHolder.textViewModele.setText(item.getModele());
         return convertView;
     }
 
     private class ViewHolder {
-        TextView textViewNom;
         TextView textViewMarque;
         TextView textViewModele;
     }
+
 }

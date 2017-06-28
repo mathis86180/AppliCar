@@ -16,15 +16,24 @@
         android:onClick="chiffre_affaire"/>
 
     <Button
+        android:id="@+id/listLoueeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/voiture_loue"
-        android:onClick="voitureLoue"/>
+        android:onClick="getListVoiture"
+        />
 
     <Button
+        android:id="@+id/listNonLoueeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/voiture_non_loue"
-        android:onClick="voitureNonLoue"/>
+        android:onClick="getListVoiture"/>
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="page de connexion"
+        android:onClick="openPageConnexion"/>
 
 </LinearLayout>
