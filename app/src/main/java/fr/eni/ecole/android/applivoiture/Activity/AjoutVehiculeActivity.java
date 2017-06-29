@@ -35,11 +35,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import fr.eni.ecole.android.applivoiture.R;
-import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
-import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
-import fr.eni.ecole.android.applivoiture.model.Agence;
-import fr.eni.ecole.android.applivoiture.model.Gerant;
-import fr.eni.ecole.android.applivoiture.model.Voiture;
+import fr.eni.ecole.android.applivoiture.util.CRUDvoiture;
 
 public class AjoutVehiculeActivity extends AppCompatActivity {
 
@@ -83,10 +79,8 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.action_Ajouter:
-                Float prixAjout = null;
-                int villeAjout = -1;
-                int campagneAjout = -1;
 
+                ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
                 TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
                 CheckBox ville = (CheckBox) findViewById(R.id.checkVille);
                 CheckBox campagne = (CheckBox) findViewById(R.id.checkCampagne);
@@ -96,64 +90,9 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
                 EditText modele = (EditText) findViewById(R.id.textModele);
                 EditText etat = (EditText) findViewById(R.id.textEtat);
 
-                String ajoutChemin = cheminPhoto.getText().toString();
-
-                if(ville.isChecked())
-                {
-                    villeAjout = 1;
-                } else {
-                    villeAjout = 0;
-                }
-
-                if(campagne.isChecked())
-                {
-                    campagneAjout = 1;
-                } else {
-                    campagneAjout = 0;
-                }
-
-                try {
-                    prixAjout = Float.parseFloat(prix.getText().toString());
-                }
-                catch (NumberFormatException e)
-                {
-                    prixAjout = 0F;
-                }
-
-                String ajoutMarque = marque.getText().toString();
-                String ajoutImmatriculation = immatriculation.getText().toString();
-                String ajoutModele = modele.getText().toString();
-                String ajoutEtat = etat.getText().toString();
-                int loueAjout = 0;
-
-                // TODO : A remplacer avec utilisation de la BDD
-
-                Agence agenceAjout = AgenceDAO.findOneById(1,AjoutVehiculeActivity.this);
-                if(agenceAjout == null)
-                {
-                    AgenceDAO.insert(AjoutVehiculeActivity.this, agenceAjout);
-                }
-
-                if (!cheminPhoto.getText().equals(cheminDefault)) {
-                    if (villeAjout == 1 || campagneAjout == 1) {
-                        if (!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()
-                                && !ajoutModele.isEmpty() && !ajoutEtat.isEmpty()) {
-                            Voiture newVoiture = new Voiture(loueAjout, villeAjout, campagneAjout, prixAjout, ajoutImmatriculation, ajoutEtat,
-                                    ajoutMarque, ajoutModele, agenceAjout, ajoutChemin);
-
-                            VoitureDAO.insert(newVoiture, AjoutVehiculeActivity.this);
-                            Toast.makeText(AjoutVehiculeActivity.this, "La voiture a bien été ajouté :)", Toast.LENGTH_LONG).show();
-                            videAjout();
-                        } else {
-                            Toast.makeText(AjoutVehiculeActivity.this, "Tout les champs textes sont obligatoires !", Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        Toast.makeText(AjoutVehiculeActivity.this, "Vous devez au moins valider la Ville ou la Campagne !", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    Toast.makeText(AjoutVehiculeActivity.this, "Vous devez changer la photo !", Toast.LENGTH_LONG).show();
-                }
+                CRUDvoiture crudVoiture = new CRUDvoiture();
+                crudVoiture.insertOrUpdateVoiture(image, cheminPhoto, ville, campagne, prix, marque, immatriculation,
+                        modele, etat, AjoutVehiculeActivity.this);
                 break;
 
             case android.R.id.home:
@@ -298,28 +237,6 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             }
         }
-    }
-
-    private void videAjout(){
-        ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
-        TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
-        CheckBox ville = (CheckBox) findViewById(R.id.checkVille);
-        CheckBox campagne = (CheckBox) findViewById(R.id.checkCampagne);
-        EditText prix = (EditText) findViewById(R.id.textPrix);
-        EditText marque = (EditText) findViewById(R.id.textMarque);
-        EditText immatriculation = (EditText) findViewById(R.id.textImmatriculation);
-        EditText modele = (EditText) findViewById(R.id.textModele);
-        EditText etat = (EditText) findViewById(R.id.textEtat);
-
-        image.setImageResource(R.drawable.renault_megane);
-        cheminPhoto.setText(cheminDefault);
-        ville.setChecked(false);
-        campagne.setChecked(false);
-        prix.setText("");
-        marque.setText("");
-        immatriculation.setText("");
-        modele.setText("");
-        etat.setText("");
     }
 
     private void deletePhoto(String cheminPhoto){

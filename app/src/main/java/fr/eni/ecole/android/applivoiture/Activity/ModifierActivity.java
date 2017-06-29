@@ -23,7 +23,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +35,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import fr.eni.ecole.android.applivoiture.R;
-import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
-import fr.eni.ecole.android.applivoiture.model.Agence;
-import fr.eni.ecole.android.applivoiture.model.Gerant;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
+import fr.eni.ecole.android.applivoiture.util.CRUDvoiture;
 
 /**
  * Created by afillon2016 on 28/06/2017.
@@ -124,10 +121,8 @@ public class ModifierActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.action_Ajouter:
-                Float prixAjout = null;
-                int villeAjout = -1;
-                int campagneAjout = -1;
 
+                ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
                 TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
                 CheckBox ville = (CheckBox) findViewById(R.id.checkVille);
                 CheckBox campagne = (CheckBox) findViewById(R.id.checkCampagne);
@@ -137,64 +132,9 @@ public class ModifierActivity extends AppCompatActivity {
                 EditText modele = (EditText) findViewById(R.id.textModele);
                 EditText etat = (EditText) findViewById(R.id.textEtat);
 
-                String ajoutChemin = cheminPhoto.getText().toString();
-
-                if(ville.isChecked())
-                {
-                    villeAjout = 1;
-                } else {
-                    villeAjout = 0;
-                }
-
-                if(campagne.isChecked())
-                {
-                    campagneAjout = 1;
-                } else {
-                    campagneAjout = 0;
-                }
-
-                try {
-                    prixAjout = Float.parseFloat(prix.getText().toString());
-                }
-                catch (NumberFormatException e)
-                {
-                    prixAjout = 0F;
-                }
-
-                String ajoutMarque = marque.getText().toString();
-                String ajoutImmatriculation = immatriculation.getText().toString();
-                String ajoutModele = modele.getText().toString();
-                String ajoutEtat = etat.getText().toString();
-                int loueAjout = 0;
-
-                // TODO : A remplacer avec utilisation de la BDD
-                Agence agenceAjout = AgenceDAO.findOneById(1,ModifierActivity.this);
-                if(agenceAjout == null)
-                {
-                    agenceAjout=new Agence(1,"dkhpsdfkfhl");
-                    AgenceDAO.insert(ModifierActivity.this, agenceAjout);
-                }
-
-                if (!cheminPhoto.getText().equals(cheminDefault)) {
-                    if (villeAjout == 1 || campagneAjout == 1) {
-                        if (!ajoutChemin.isEmpty() && !prixAjout.isNaN() && !ajoutMarque.isEmpty() && !ajoutImmatriculation.isEmpty()
-                                && !ajoutModele.isEmpty() && !ajoutEtat.isEmpty()) {
-                            Voiture newVoiture = new Voiture(loueAjout, villeAjout, campagneAjout, prixAjout, ajoutImmatriculation, ajoutEtat,
-                                    ajoutMarque, ajoutModele, agenceAjout, ajoutChemin);
-
-                            VoitureDAO.update(newVoiture, ModifierActivity.this);
-                            Toast.makeText(ModifierActivity.this, "La voiture a bien été modifié :)", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(ModifierActivity.this, "Tout les champs textes sont obligatoires !", Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        Toast.makeText(ModifierActivity.this, "Vous devez au moins valider la Ville ou la Campagne !", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    Toast.makeText(ModifierActivity.this, "Vous devez changer la photo !", Toast.LENGTH_LONG).show();
-                }
-
+                CRUDvoiture crudVoiture = new CRUDvoiture();
+                crudVoiture.insertOrUpdateVoiture(image, cheminPhoto, ville, campagne, prix, marque, immatriculation,
+                        modele, etat, ModifierActivity.this);
 
                 Intent detailsPage = new Intent(ModifierActivity.this, DetailsVoitureActivity.class);
                 startActivity(detailsPage);
