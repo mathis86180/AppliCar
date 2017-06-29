@@ -37,6 +37,7 @@ import java.io.OutputStream;
 import fr.eni.ecole.android.applivoiture.R;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
+import fr.eni.ecole.android.applivoiture.util.CRUDphoto;
 import fr.eni.ecole.android.applivoiture.util.CRUDvoiture;
 
 /**
@@ -55,6 +56,8 @@ public class ModifierActivity extends AppCompatActivity {
     private static final String TAG = "Ajout";
     private Uri mImageCaptureUri;
     private ImageButton action_Photo;
+
+    private CRUDphoto crudPhoto = new CRUDphoto();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,65 +214,8 @@ public class ModifierActivity extends AppCompatActivity {
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
         String cheminTestPhoto = cheminPhoto.getText().toString();
 
-        Long tsLong = System.currentTimeMillis()/1000;
-        String ts = tsLong.toString();
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-
-            deletePhoto(cheminTestPhoto);
-
-            // Let's read picked image data - its URI
-            Uri pickedImage = data.getData();
-            // Let's read picked image path using content resolver
-            String[] filePath = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(pickedImage, filePath, null, null, null);
-            cursor.moveToFirst();
-            String imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
-
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath, options);
-            image.setImageBitmap(bitmap);
-
-            cheminPhoto.setText(imagePath.toString());
-
-            cursor.close();
-        }
-
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            // Récupération de la données
-            Bitmap bit = (Bitmap) data.getExtras().get("data");
-
-            ByteArrayOutputStream dataImage = new ByteArrayOutputStream();
-            bit.compress(Bitmap.CompressFormat.JPEG, 100, dataImage);
-            ByteArrayOutputStream bos = (ByteArrayOutputStream)dataImage;
-
-            // Affichage  de l'image
-            image.setImageBitmap(bit);
-
-            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-                    "picture"+ ts + ".jpg");
-            OutputStream os = null;
-            try {
-                Log.e(TAG, "Writing ... "+file.getAbsolutePath());
-
-                cheminPhoto.setText(file.getAbsolutePath());
-
-                os = new FileOutputStream(file);
-                os.write(bos.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                Log.e(TAG, "Cannot write to " + file, e);
-            } finally {
-                if (os != null) {
-                    try {
-                        os.close();
-                    } catch (IOException e) {
-                        // Ignore
-                    }
-                }
-            }
-        }
+        crudPhoto.enregistrementPhoto(ModifierActivity.this, requestCode, PICK_IMAGE_REQUEST, resultCode, data,
+                image, cheminPhoto, REQUEST_CODE, TAG, cheminTestPhoto);
     }
 
     @Override
@@ -286,19 +232,6 @@ public class ModifierActivity extends AppCompatActivity {
             }
         }
     }
-
-    private void deletePhoto(String cheminPhoto){
-
-        if(!cheminPhoto.equals(cheminDefault)) {
-            File file = new File(cheminPhoto);
-            boolean deleted = file.delete();
-
-            if (deleted == false) {
-                Toast.makeText(ModifierActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
 }
 
 

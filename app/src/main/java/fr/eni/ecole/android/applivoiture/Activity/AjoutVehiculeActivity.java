@@ -1,6 +1,8 @@
 package fr.eni.ecole.android.applivoiture.Activity;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -35,6 +37,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import fr.eni.ecole.android.applivoiture.R;
+import fr.eni.ecole.android.applivoiture.util.CRUDphoto;
 import fr.eni.ecole.android.applivoiture.util.CRUDvoiture;
 
 public class AjoutVehiculeActivity extends AppCompatActivity {
@@ -45,7 +48,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
     private Uri mImageCaptureUri;
     private ImageButton action_Photo;
 
-    String cheminDefault = "defaut";
+    private CRUDphoto crudPhoto = new CRUDphoto();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +117,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
         String ajoutChemin = cheminPhoto.getText().toString();
-        deletePhoto(ajoutChemin);
+        crudPhoto.deletePhoto(ajoutChemin, AjoutVehiculeActivity.this);
 
     }
 
@@ -123,7 +126,7 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
         String cheminTestPhoto = cheminPhoto.getText().toString();
 
-        deletePhoto(cheminTestPhoto);
+        crudPhoto.deletePhoto(cheminTestPhoto, AjoutVehiculeActivity.this);
 
         // Lancement de l'action : capture de l'image
         Intent intent_prendrePhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -165,63 +168,10 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
 
         ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
+        String cheminTestPhoto = cheminPhoto.getText().toString();
 
-        Long tsLong = System.currentTimeMillis()/1000;
-        String ts = tsLong.toString();
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            // Let's read picked image data - its URI
-            Uri pickedImage = data.getData();
-            // Let's read picked image path using content resolver
-            String[] filePath = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(pickedImage, filePath, null, null, null);
-            cursor.moveToFirst();
-            String imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
-
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath, options);
-            image.setImageBitmap(bitmap);
-
-            cheminPhoto.setText(imagePath.toString());
-
-            cursor.close();
-        }
-
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            // Récupération de la données
-            Bitmap bit = (Bitmap) data.getExtras().get("data");
-
-            ByteArrayOutputStream dataImage = new ByteArrayOutputStream();
-            bit.compress(Bitmap.CompressFormat.JPEG, 100, dataImage);
-            ByteArrayOutputStream bos = (ByteArrayOutputStream)dataImage;
-
-            // Affichage  de l'image
-            image.setImageBitmap(bit);
-
-            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-                    "picture"+ ts + ".jpg");
-            OutputStream os = null;
-            try {
-                Log.e(TAG, "Writing ... "+file.getAbsolutePath());
-
-                cheminPhoto.setText(file.getAbsolutePath());
-
-                os = new FileOutputStream(file);
-                os.write(bos.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                Log.e(TAG, "Cannot write to " + file, e);
-            } finally {
-                if (os != null) {
-                    try {
-                        os.close();
-                    } catch (IOException e) {
-                        // Ignore
-                    }
-                }
-            }
-        }
+        crudPhoto.enregistrementPhoto(AjoutVehiculeActivity.this, requestCode, PICK_IMAGE_REQUEST, resultCode, data,
+                image, cheminPhoto, REQUEST_CODE, TAG, cheminTestPhoto);
     }
 
     @Override
@@ -235,18 +185,6 @@ public class AjoutVehiculeActivity extends AppCompatActivity {
             else {
                 Toast.makeText(AjoutVehiculeActivity.this, "Permission refusée, modifier les paramétres", Toast.LENGTH_SHORT).show();
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            }
-        }
-    }
-
-    private void deletePhoto(String cheminPhoto){
-
-        if(!cheminPhoto.equals(cheminDefault)) {
-            File file = new File(cheminPhoto);
-            boolean deleted = file.delete();
-
-            if (deleted == false) {
-                Toast.makeText(AjoutVehiculeActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
             }
         }
     }
