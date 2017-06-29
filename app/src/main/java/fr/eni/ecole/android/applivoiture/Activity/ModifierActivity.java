@@ -136,8 +136,22 @@ public class ModifierActivity extends AppCompatActivity {
                 crudVoiture.insertOrUpdateVoiture(image, cheminPhoto, ville, campagne, prix, marque, immatriculation,
                         modele, etat, ModifierActivity.this);
 
-                Intent detailsPage = new Intent(ModifierActivity.this, DetailsVoitureActivity.class);
-                startActivity(detailsPage);
+                final Intent detailsPage = new Intent(ModifierActivity.this, DetailsVoitureActivity.class);
+
+                Thread thread = new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000); // As I am using LENGTH_LONG in Toast
+                            startActivity(detailsPage);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                thread.start();
+
                 break;
 
             case android.R.id.home:
