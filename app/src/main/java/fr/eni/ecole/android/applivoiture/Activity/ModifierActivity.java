@@ -169,11 +169,6 @@ public class ModifierActivity extends AppCompatActivity {
 
     public void onClicBoutonPhoto(View view){
 
-        TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
-        String cheminTestPhoto = cheminPhoto.getText().toString();
-
-        deletePhoto(cheminTestPhoto);
-
         // Lancement de l'action : capture de l'image
         Intent intent_prendrePhoto = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -214,11 +209,15 @@ public class ModifierActivity extends AppCompatActivity {
 
         ImageView image = (ImageView) findViewById(R.id.imageViewPhoto);
         TextView cheminPhoto = (TextView) findViewById(R.id.cheminPhoto);
+        String cheminTestPhoto = cheminPhoto.getText().toString();
 
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+
+            deletePhoto(cheminTestPhoto);
+
             // Let's read picked image data - its URI
             Uri pickedImage = data.getData();
             // Let's read picked image path using content resolver
