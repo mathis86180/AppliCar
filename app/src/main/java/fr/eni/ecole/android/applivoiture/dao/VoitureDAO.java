@@ -99,6 +99,11 @@ public class VoitureDAO {
         return Database.getInstance(context).getDb().update(TABLE_NAME, values, QUERY_GET_ONE, new String[] {immatriculation});
     }
 
+    public static void delete(String immatriculation){
+        String immatriculationS = immatriculation.toString();
+        Database.getDb().delete(TABLE_NAME, QUERY_GET_ONE, new String[] {immatriculationS});
+    }
+
     public static Voiture findOneById(String immatriculationQuery,Context context)
     {
         Voiture v = null;

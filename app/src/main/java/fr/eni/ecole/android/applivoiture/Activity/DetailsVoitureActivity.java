@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -87,6 +88,15 @@ public class DetailsVoitureActivity extends AppCompatActivity {
                 intent = new Intent(DetailsVoitureActivity.this, ModifierActivity.class);
                 intent.putExtra("immatriculation", idAModif);
                 startActivityForResult(intent, REQUEST_CODE);
+                break;
+
+            case R.id.action_Supprimer:
+                // TODO : Gerer suppression lors d'une location
+                Toast.makeText(DetailsVoitureActivity.this, "Suppression", Toast.LENGTH_LONG).show();
+                String voitureAsuppr = getId();
+                VoitureDAO.delete(voitureAsuppr);
+                Intent homepage = new Intent(DetailsVoitureActivity.this, ListeVoitureLoueActivity.class);
+                startActivity(homepage);
                 break;
 
             case android.R.id.home:

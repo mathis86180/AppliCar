@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="fr.eni.ecole.android.applivoiture.Activity.DetailsVoitureActivity">
 
+        <item android:id="@+id/action_Supprimer"
+            android:title="Supprimer"
+            android:icon="@android:drawable/ic_menu_delete" />
+
         <item android:id="@+id/action_Modifier"
             android:title="Modifier"
             android:icon="@android:drawable/ic_menu_edit"
