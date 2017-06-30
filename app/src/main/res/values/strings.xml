@@ -36,4 +36,6 @@
     <string name="gallery">Gallery</string>
     <string name="defaut">defaut</string>
     <string name="ajouter_un_client">Ajouter un client</string>
+    <string name="mail">\@mail :</string>
+    <string name="mot_de_passe">Mot de passe :</string>
 </resources>

@@ -21,16 +21,17 @@ import fr.eni.ecole.android.applivoiture.model.Voiture;
 public class VoitureDAO {
 
     private final static String TABLE_NAME = "VOITURE";
-    private final static String QUERY_SELECT_ALL = "SELECT ID, LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
-            " MODELE, ID_AGENCE FROM VOITURE";
-    private final static String QUERY_SELECT_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
-            " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 1";
-    private final static String QUERY_SELECT_NON_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
-            " MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 0";
+    private final static String QUERY_SELECT_ALL = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION," +
+            " ETAT, MODELE, ID_AGENCE FROM VOITURE";
+    private final static String QUERY_SELECT_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION," +
+            " ETAT, MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 1";
+    private final static String QUERY_SELECT_NON_LOUEES = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION," +
+            " ETAT, MODELE, ID_AGENCE FROM VOITURE WHERE LOUE = 0";
     private final static String QUERY_FIND_ONE = "SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE, IMMATRICULATION, ETAT," +
             " MODELE, ID_AGENCE, IMAGE FROM VOITURE WHERE IMMATRICULATION = ?";
     private final static String QUERY_GET_ONE = "IMMATRICULATION = ?";
-
+    private final static String QUERY_MIN_PRIX = "SELECT MIN(PRIX) AS PRIX FROM VOITURE";
+    private final static String QUERY_MAX_PRIX = "SELECT MAX(PRIX) AS PRIX FROM VOITURE";
 
     public static String getQuerySelectLouees() {
         return QUERY_SELECT_LOUEES;
@@ -122,6 +123,69 @@ public class VoitureDAO {
             v = new Voiture(loue,ville,campagne,prix,immatriculation,etat,marque,modele,image);
         }
         return v;
+    }
+
+    public static float selectMin(Context context){
+        float min = 0;
+
+        Cursor c  = Database.getInstance(context).getDb().rawQuery(QUERY_MIN_PRIX, null);
+
+        if (c.moveToFirst()) {
+            while (!c.isAfterLast()) {
+
+                min = c.getFloat(c.getColumnIndex("PRIX"));
+
+                c.moveToNext();
+            }
+        }
+
+        return min;
+    }
+
+    public static float selectMax(Context context){
+        float max = 0;
+
+        Cursor c  = Database.getInstance(context).getDb().rawQuery(QUERY_MAX_PRIX, null);
+
+        if (c.moveToFirst()) {
+            while (!c.isAfterLast()) {
+
+                max = c.getFloat(c.getColumnIndex("PRIX"));
+
+                c.moveToNext();
+            }
+        }
+
+        return max;
+    }
+
+    public static List<Voiture> findRechercheVoitures(Context context, int villeRecherche, int campagneRecherche,
+                                                      int minPrix, int maxPrix){
+
+        List<Voiture> maListe = new ArrayList<>();
+
+        Cursor c = Database.getInstance(context).getDb().rawQuery("SELECT LOUE, VILLE, CAMPAGNE, PRIX,  MARQUE," +
+                " IMMATRICULATION, ETAT, MODELE, ID_AGENCE FROM VOITURE WHERE CAMPAGNE = " + campagneRecherche + " " +
+                " AND VILLE = " + villeRecherche + " AND PRIX BETWEEN " + minPrix + " AND " + maxPrix + "", null);
+
+        if (c.moveToFirst()) {
+            while (!c.isAfterLast()) {
+
+                String immatriculation = c.getString(c.getColumnIndex("immatriculation"));
+                Integer campagne = c.getInt(c.getColumnIndex("campagne"));
+                Integer ville = c.getInt(c.getColumnIndex("ville"));
+                Integer loue = c.getInt(c.getColumnIndex("loue"));
+                String etat = c.getString(c.getColumnIndex("etat"));
+                String modele = c.getString(c.getColumnIndex("modele"));
+                String marque = c.getString(c.getColumnIndex("marque"));
+                Float prix = c.getFloat(c.getColumnIndex("prix"));
+
+                Voiture v = new Voiture(loue,ville,campagne,prix,immatriculation,etat,marque,modele);
+                maListe.add(v);
+                c.moveToNext();
+            }
+        }
+        return maListe;
     }
 
 }
