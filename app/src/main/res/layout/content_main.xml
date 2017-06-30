@@ -8,32 +8,43 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="fr.eni.ecole.android.applivoiture.MainActivity"
     tools:showIn="@layout/app_bar_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/chiffre_d_affaires"
+            android:onClick="chiffre_affaire"
+            android:background="@drawable/ca"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/listLoueeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/voiture_loue"
+            android:onClick="getListVoiture"
+            android:background="@drawable/cadena_list"
+            />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/chiffre_d_affaires"
-        android:onClick="chiffre_affaire"/>
-
-    <Button
-        android:id="@+id/listLoueeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/voiture_loue"
-        android:onClick="getListVoiture"
-        />
-
-    <Button
-        android:id="@+id/listNonLoueeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/voiture_non_loue"
-        android:onClick="getListVoiture"/>
-    <Button
-        android:id="@+id/btnConnect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="page de connexion"
-        android:onClick="openPageConnexion"/>
+        <Button
+            android:id="@+id/listNonLoueeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/voiture_non_loue"
+            android:onClick="getListVoiture"
+            android:background="@drawable/car_available"/>
+    </LinearLayout>
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="page de connexion"
+            android:onClick="openPageConnexion"/>
 
 </LinearLayout>

@@ -27,6 +27,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String CLIENT_PRENOM = "prenom";
     private static final String CLIENT_ADRESSE = "adresse";
     private static final String CLIENT_VILLE = "ville";
+    private static final String CLIENT_MAIL = "mail";
 
     private static final String GERANT_ID = "id";
     private static final String GERANT_NOM = "nom";
@@ -101,7 +102,8 @@ public class Database extends SQLiteOpenHelper {
                 CLIENT_NOM + " VARCHAR, " +
                 CLIENT_PRENOM + " VARCHAR, " +
                 CLIENT_ADRESSE + " VARCHAR, " +
-                CLIENT_VILLE + " VARCHAR " +
+                CLIENT_VILLE + " VARCHAR, " +
+                CLIENT_MAIL + " VARCHAR " +
                 ");");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TBL_AGENCE + " ( " +
                 AGENCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

@@ -19,11 +19,13 @@ import java.util.Date;
 import fr.eni.ecole.android.applivoiture.Activity.AjoutVehiculeActivity;
 import fr.eni.ecole.android.applivoiture.Activity.ListeVoitureLoueActivity;
 import fr.eni.ecole.android.applivoiture.Activity.LoginActivity;
+import fr.eni.ecole.android.applivoiture.dao.AgenceDAO;
 import fr.eni.ecole.android.applivoiture.dao.ClientDAO;
 import fr.eni.ecole.android.applivoiture.dao.Database;
 import fr.eni.ecole.android.applivoiture.dao.GerantDAO;
 import fr.eni.ecole.android.applivoiture.dao.LocationDAO;
 import fr.eni.ecole.android.applivoiture.dao.VoitureDAO;
+import fr.eni.ecole.android.applivoiture.model.Agence;
 import fr.eni.ecole.android.applivoiture.model.Client;
 import fr.eni.ecole.android.applivoiture.model.Gerant;
 import fr.eni.ecole.android.applivoiture.model.Location;
@@ -63,6 +65,25 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Database.getInstance(MainActivity.this);
+       /* //creation client
+        Client client = ClientDAO.findOneByMail("toto@toto.fr",MainActivity.this);
+        if(client == null){
+            client = new Client("toto","toto","toto","toto","toto@toto.fr");
+            ClientDAO.insert(client,MainActivity.this);
+        }
+        //creation agence
+        Agence agence = AgenceDAO.findOneById(1, MainActivity.this);
+        if(agence == null){
+            agence = new Agence("toto");
+            AgenceDAO.insert(MainActivity.this,agence);
+        }
+        //creation gerant
+        Gerant gerant = GerantDAO.findByMail("gerant@gerant.fr",MainActivity.this);
+        if(gerant == null){
+            agence = AgenceDAO.findOneById(1, MainActivity.this);
+            gerant = new Gerant("gerant","gerant","gerant@gerant.fr","gerant",agence);
+            GerantDAO.insert(MainActivity.this, gerant);
+        }*/
 
     }
 

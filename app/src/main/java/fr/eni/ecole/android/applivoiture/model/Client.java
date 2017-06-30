@@ -13,21 +13,25 @@ public class Client implements Serializable {
     private String prenom;
     private String adresse;
     private String ville;
+    private String mail;
 
-    public Client(Integer id, String nom, String prenom, String adresse, String ville) {
+    public Client(Integer id, String nom, String prenom, String adresse, String ville, String mail) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.ville = ville;
+        this.mail = mail;
     }
 
-    public Client(String nom, String prenom, String adresse, String ville) {
+    public Client(String nom, String prenom, String adresse, String ville, String mail) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.ville = ville;
+        this.mail = mail;
     }
+
 
     public Integer getId() {
         return id;
@@ -67,5 +71,13 @@ public class Client implements Serializable {
 
     public void setVille(String ville) {
         this.ville = ville;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

@@ -83,4 +83,11 @@
                 android:text="campagne/ville"
             />
         </LinearLayout>
+    <Button
+        android:id="@+id/buttonLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detail location"
+        android:visibility="visible"
+        android:onClick="openLocation"/>
 </LinearLayout>

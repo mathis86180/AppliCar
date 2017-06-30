@@ -28,28 +28,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activity.ListeVoitureLoueActivity"
+        <activity
+            android:name=".Activity.ListeVoitureLoueActivity"
             android:label="ListeVoitureLoueActivity"
-            android:parentActivityName=".MainActivity"/>
-
-        <activity android:name=".Activity.DetailsVoitureActivity"
-            android:label="DetailsVoitureActivity">
-        </activity>
-
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Activity.DetailsVoitureActivity"
+            android:label="DetailsVoitureActivity"></activity>
         <activity
             android:name=".Activity.AjoutVehiculeActivity"
             android:label="AjoutVehiculeActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".Activity.ModifierActivity"
-            android:label="ModifierActivity">
-        </activity>
-
+        <activity
+            android:name=".Activity.ModifierActivity"
+            android:label="ModifierActivity"></activity>
         <activity android:name=".Activity.LoginActivity" />
-
         <activity android:name=".Activity.InscriptionActivity" />
+        <activity android:name=".Activity.LocationActivity"></activity>
     </application>
 
 </manifest>

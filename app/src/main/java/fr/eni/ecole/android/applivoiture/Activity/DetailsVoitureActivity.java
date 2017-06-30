@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,9 @@ public class DetailsVoitureActivity extends AppCompatActivity {
     private TextView prix;
     private TextView immatriculation;
     private TextView terrain;
+    private Button buttonLocation;
+    Voiture v;
+    Integer loue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,12 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         prix = (TextView) findViewById(R.id.prix);
         immatriculation = (TextView) findViewById(R.id.immatriculation);
         terrain = (TextView) findViewById(R.id.terrain);
+        buttonLocation = (Button) findViewById(R.id.buttonLocation);
 
         Intent intent = getIntent();
         String immatriculationQuery = intent.getStringExtra("immatriculation");
-        Voiture v = VoitureDAO.findOneById(immatriculationQuery,DetailsVoitureActivity.this);
+        loue = intent.getIntExtra("loue",2);
+        v = VoitureDAO.findOneById(immatriculationQuery,DetailsVoitureActivity.this);
         String campagne = "-campagne";
         String ville = "-ville";
         modeleMarque.setText(v.getMarque() + " " + v.getModele());
@@ -58,15 +65,17 @@ public class DetailsVoitureActivity extends AppCompatActivity {
 
         File imgFile = new  File(v.getImage());
 
-        if(imgFile.exists()){
+        /*if(imgFile.exists()){
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             imageVoiture.setImageBitmap(myBitmap);
-        }
+        }*/
 
         Picasso.with(DetailsVoitureActivity.this)
             .load(imgFile)
             .into(imageVoiture);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -120,5 +129,12 @@ public class DetailsVoitureActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String id = intent.getStringExtra("immatriculation");
         return id;
+    }
+
+    public void openLocation(View view){
+        Intent intent = new Intent(DetailsVoitureActivity.this,LocationActivity.class);
+        intent.putExtra("immatriculation", v.getImmatriculation());
+        intent.putExtra("loue",loue);
+        startActivity(intent);
     }
 }

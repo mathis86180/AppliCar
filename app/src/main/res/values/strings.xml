@@ -20,8 +20,8 @@
         completions."
     </string>
     <string name="chiffre_d_affaires">chiffre d\'affaires</string>
-    <string name="voiture_loue">voiture loue</string>
-    <string name="voiture_non_loue">voiture non loues</string>
+    <string name="voiture_loue">voitures louees</string>
+    <string name="voiture_non_loue">voitures non louees</string>
     <string name="ajouter_une_voiture">Ajouter une voiture</string>
     <string name="recherche">Recherche</string>
     <string name="param_tres">Paramétres</string>
