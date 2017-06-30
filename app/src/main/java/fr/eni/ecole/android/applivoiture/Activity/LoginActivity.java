@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         String mail = editMail.getText().toString();
         String mdp = editMdp.getText().toString();
         Database.getInstance(LoginActivity.this);
-        if(mail != null && mdp != null) {
+        if(!mail.equals("") && !mdp.equals("")) {
             g = GerantDAO.findByMailMdp(mail, mdp, LoginActivity.this);
             if(g != null)
             {
@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "Le gérant n'existe pas", Toast.LENGTH_SHORT).show();
             }
+        } else {
+            Toast.makeText(this, "Veuillez rentrer une adresse mail et un mot de passe !", Toast.LENGTH_SHORT).show();
         }
     }
 

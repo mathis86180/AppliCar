@@ -59,4 +59,6 @@
     <string name="detail_location">Detail location</string>
     <string name="ville2">Ville</string>
     <string name="campagne2">Campagne</string>
+    <string name="AppliCar">AppliCar</string>
+    <string name="android_studio_android_com">android.studio@android.com</string>
 </resources>

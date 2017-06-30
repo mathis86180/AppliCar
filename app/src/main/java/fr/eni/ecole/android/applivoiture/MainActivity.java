@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -34,6 +35,8 @@ import fr.eni.ecole.android.applivoiture.model.Client;
 import fr.eni.ecole.android.applivoiture.model.Gerant;
 import fr.eni.ecole.android.applivoiture.model.Location;
 import fr.eni.ecole.android.applivoiture.model.Voiture;
+
+import static fr.eni.ecole.android.applivoiture.R.id.textView;
 
 
 public class MainActivity extends AppCompatActivity
@@ -58,6 +61,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        /*TextView adressMail = (TextView) findViewById(textView);
+        Intent intent = getIntent();
+        String mail = intent.getStringExtra("Mail");
+        adressMail.setText(mail);*/
 
         Database.getInstance(MainActivity.this);
 

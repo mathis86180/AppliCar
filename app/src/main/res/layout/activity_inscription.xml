@@ -60,14 +60,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mail"
-            android:inputType="textEmailAddress"/>
+            android:text="@string/mail" />
 
         <EditText
             android:id="@+id/editMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
+            android:inputType="textEmailAddress"/>
 
     </LinearLayout>
 

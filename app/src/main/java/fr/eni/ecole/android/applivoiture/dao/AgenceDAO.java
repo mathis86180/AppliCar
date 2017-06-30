@@ -19,8 +19,6 @@ public class AgenceDAO {
     private final static String QUERY_FIND_ONE = "SELECT ID, NOM FROM AGENCE WHERE ID = ?";
     private final static String QUERY_GET_ONE = "ID = ?";
 
-
-
     public AgenceDAO() {}
 
     public static void insert(Context context, Agence a)

@@ -43,6 +43,8 @@ public class InscriptionActivity extends AppCompatActivity {
         String mdpRepeat = editMdpRepeat.getText().toString();
         if(editNom.getText() != null && editMail.getText() != null && editPrenom.getText() != null && editMdp != null && editMdpRepeat != null){
             if(mdp.equals(mdpRepeat)) {
+                /*Agence agence = new Agence(1,"test");
+                AgenceDAO.insert(InscriptionActivity.this, agence);*/
                 a = AgenceDAO.findOneById(1,InscriptionActivity.this);
                 Gerant gTest = GerantDAO.findByMail(mail,InscriptionActivity.this);
                 Gerant g = new Gerant(nom, prenom, mail, mdp, a);
@@ -63,7 +65,5 @@ public class InscriptionActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Un des champs est vide !", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 }
