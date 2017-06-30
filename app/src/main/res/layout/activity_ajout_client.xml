@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="fr.eni.ecole.android.applivoiture.Activity.AjoutClientActivity">
+
+    <EditText
+        android:id="@+id/editNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nom"
+        />
+    <EditText
+        android:id="@+id/editPrenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="prénom"
+        />
+    <EditText
+        android:id="@+id/editAdresse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="adresse"
+        />
+    <EditText
+        android:id="@+id/editVille"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ville"
+        />
+    <EditText
+        android:id="@+id/editMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mail"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:onClick="enregistrerClient"
+        />
+</LinearLayout>

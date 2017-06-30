@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import java.util.Date;
 
+import fr.eni.ecole.android.applivoiture.Activity.AjoutClientActivity;
 import fr.eni.ecole.android.applivoiture.Activity.AjoutVehiculeActivity;
 import fr.eni.ecole.android.applivoiture.Activity.ListeVoitureLoueActivity;
 import fr.eni.ecole.android.applivoiture.Activity.LoginActivity;
@@ -45,15 +46,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -132,7 +124,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.Parametre) {
 
-        }
+        } else if (id == R.id.AjoutClient) {
+           Intent intent = new Intent(MainActivity.this, AjoutClientActivity.class);
+           startActivity(intent);
+       }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

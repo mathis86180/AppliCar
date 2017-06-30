@@ -21,20 +21,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activity.ListeVoitureLoueActivity"
             android:label="ListeVoitureLoueActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Activity.DetailsVoitureActivity"
-            android:label="DetailsVoitureActivity"></activity>
+            android:label="DetailsVoitureActivity" />
         <activity
             android:name=".Activity.AjoutVehiculeActivity"
             android:label="AjoutVehiculeActivity"
@@ -42,10 +36,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity.ModifierActivity"
-            android:label="ModifierActivity"></activity>
-        <activity android:name=".Activity.LoginActivity" />
+            android:label="ModifierActivity" />
+        <activity android:name=".Activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activity.InscriptionActivity" />
-        <activity android:name=".Activity.LocationActivity"></activity>
+        <activity android:name=".Activity.LocationActivity" />
+        <activity android:name=".Activity.AjoutClientActivity"></activity>
     </application>
 
 </manifest>

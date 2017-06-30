@@ -40,11 +40,4 @@
             android:onClick="getListVoiture"
             android:background="@drawable/car_available"/>
     </LinearLayout>
-        <Button
-            android:id="@+id/btnConnect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="page de connexion"
-            android:onClick="openPageConnexion"/>
-
 </LinearLayout>
