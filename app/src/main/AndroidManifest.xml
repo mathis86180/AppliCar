@@ -24,8 +24,7 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activity.ListeVoitureLoueActivity"
-            android:label="ListeVoitureLoueActivity"
-            android:parentActivityName=".MainActivity" />
+            android:label="ListeVoitureLoueActivity" />
         <activity
             android:name=".Activity.DetailsVoitureActivity"
             android:label="DetailsVoitureActivity" />
@@ -47,6 +46,9 @@
         <activity android:name=".Activity.InscriptionActivity" />
         <activity android:name=".Activity.LocationActivity" />
         <activity android:name=".Activity.AjoutClientActivity"></activity>
+
+        <activity android:name=".Activity.RechercheActivity"
+            android:label="RechercheActivity" />
     </application>
 
 </manifest>
