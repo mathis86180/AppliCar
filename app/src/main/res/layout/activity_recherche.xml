@@ -20,14 +20,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ville"/>
+            android:text="@string/ville2"/>
 
         <CheckBox
             android:id="@+id/checkCampagne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Campagne"
+            android:text="@string/campagne2"
             />
 
     </LinearLayout>

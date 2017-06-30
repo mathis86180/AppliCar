@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
     tools:context="fr.eni.ecole.android.applivoiture.Activity.LocationActivity">
 
     <LinearLayout
@@ -12,62 +14,97 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="10dp">
+
         <TextView
             android:id="@+id/textImmatriculation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="immatriculation"
             android:textSize="30sp"/>
-        <EditText
-            android:id="@+id/editClient"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="mail du client"
-            android:textSize="30sp"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mail_du_client"/>
+
+            <EditText
+                android:id="@+id/editClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="mail du client"
+                android:inputType="textEmailAddress"/>
+
+        </LinearLayout>
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_d_but"/>
+
         <EditText
             android:id="@+id/editDateDebut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="ma date"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:inputType="date"/>
+
         <ImageButton
             android:id="@+id/buttonDateDebut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_my_calendar"
-            android:onClick="AjouterDate"/>
+            android:onClick="AjouterDate" />
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_fin_location"/>
+
         <EditText
             android:id="@+id/editDateFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="ma date"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:inputType="date"/>
+
         <ImageButton
             android:id="@+id/buttonDateFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_my_calendar"
             android:onClick="AjouterDate"/>
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
+
         <TextView
             android:id="@+id/textVoitureLouee"
             android:layout_width="match_parent"
@@ -75,29 +112,36 @@
             tools:text="Voiture louée"
             android:textSize="20sp"
             android:visibility="invisible"/>
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imageVoiture"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             tools:src="@drawable/renault_megane"/>
-     </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/buttonValider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Valider"
+            android:text="@string/valider"
             android:onClick="enregistrerLocation"/>
-        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

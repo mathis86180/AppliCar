@@ -38,4 +38,25 @@
     <string name="ajouter_un_client">Ajouter un client</string>
     <string name="mail">\@mail :</string>
     <string name="mot_de_passe">Mot de passe :</string>
+    <string name="r_p_ter_le_mot_de_passe">Répéter le mot de passe :</string>
+    <string name="s_inscrire">S\'inscrire</string>
+    <string name="prenom">Prenom :</string>
+    <string name="nom">Nom :</string>
+    <string name="inscription">Inscription</string>
+    <string name="mail_du_client">\@mail du client :</string>
+    <string name="date_d_but">Date début location :</string>
+    <string name="date_fin_location">Date fin location :</string>
+    <string name="adresse">Adresse :</string>
+    <string name="valider">Valider</string>
+    <string name="marque">Marque :</string>
+    <string name="immatriculation">Immatriculation :</string>
+    <string name="mod_le">Modéle :</string>
+    <string name="modele_marque">modele + marque</string>
+    <string name="prix_par_jour_la_location">Prix par jour à la location :</string>
+    <string name="prix_j">prix/j</string>
+    <string name="route_adapt_e_pour_la_voiture">Route adaptée pour la voiture :</string>
+    <string name="campagne_ville">campagne/ville</string>
+    <string name="detail_location">Detail location</string>
+    <string name="ville2">Ville</string>
+    <string name="campagne2">Campagne</string>
 </resources>
