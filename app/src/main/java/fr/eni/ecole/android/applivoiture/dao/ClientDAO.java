@@ -14,6 +14,7 @@ public class ClientDAO {
 
     private static final String QUERY_FIND_BY_ID = "SELECT ID, NOM, PRENOM, ADRESSE, VILLE, MAIL FROM CLIENT WHERE ID = ?";
     private static final String QUERY_FIND_BY_MAIL = "SELECT ID, NOM, PRENOM, ADRESSE, VILLE, MAIL FROM CLIENT WHERE MAIL = ?";
+
     public static void insert(Client c, Context context){
         ContentValues values = new ContentValues();
         values.put("nom",c.getNom());

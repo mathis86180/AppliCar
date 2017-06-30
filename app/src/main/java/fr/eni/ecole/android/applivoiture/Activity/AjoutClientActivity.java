@@ -1,11 +1,16 @@
 package fr.eni.ecole.android.applivoiture.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import fr.eni.ecole.android.applivoiture.MainActivity;
 import fr.eni.ecole.android.applivoiture.R;
+import fr.eni.ecole.android.applivoiture.dao.ClientDAO;
+import fr.eni.ecole.android.applivoiture.model.Client;
 
 public class AjoutClientActivity extends AppCompatActivity {
 
@@ -34,6 +39,12 @@ public class AjoutClientActivity extends AppCompatActivity {
         String adresse = editAdresse.getText().toString();
         String ville = editVille.getText().toString();
         String mail = editMail.getText().toString();
+
+        Client client = new Client(nom,prenom,adresse,ville,mail);
+        ClientDAO.insert(client,AjoutClientActivity.this);
+        Toast.makeText(this, "Client ajouté", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(AjoutClientActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
