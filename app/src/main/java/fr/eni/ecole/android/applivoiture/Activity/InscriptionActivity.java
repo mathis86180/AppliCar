@@ -41,10 +41,10 @@ public class InscriptionActivity extends AppCompatActivity {
         String mail = editMail.getText().toString();
         String mdp = editMdp.getText().toString();
         String mdpRepeat = editMdpRepeat.getText().toString();
-        if(editNom.getText() != null && editMail.getText() != null && editPrenom.getText() != null && editMdp != null && editMdpRepeat != null){
+        if(!nom.equals("") && !prenom.equals("") && !mail.equals("") && !mdp.equals("") && !mdpRepeat.equals("")){
             if(mdp.equals(mdpRepeat)) {
-                /*Agence agence = new Agence(1,"test");
-                AgenceDAO.insert(InscriptionActivity.this, agence);*/
+                Agence agence = new Agence(1,"test");
+                AgenceDAO.insert(InscriptionActivity.this, agence);
                 a = AgenceDAO.findOneById(1,InscriptionActivity.this);
                 Gerant gTest = GerantDAO.findByMail(mail,InscriptionActivity.this);
                 Gerant g = new Gerant(nom, prenom, mail, mdp, a);
